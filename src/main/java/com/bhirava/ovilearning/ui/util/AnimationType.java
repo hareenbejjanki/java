@@ -1,0 +1,7 @@
+package com.bhirava.ovilearning.ui.util;
+
+public enum AnimationType {
+
+	FADE_IN, FADE_OUT, ZOOM_IN, ZOOM_OUT, SLIDE_IN_DOWN, SLIDE_IN_UP, SLIDE_IN_RIGHT, SLIDE_IN_LEFT, SLIDE_OUT_DOWN, SLIDE_OUT_UP, SLIDE_OUT_RIGHT, SLIDE_OUT_LEFT 
+
+}
