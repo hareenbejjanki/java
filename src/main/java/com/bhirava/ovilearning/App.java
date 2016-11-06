@@ -29,6 +29,8 @@ public class App extends javax.swing.JPanel {
 			uiOtherProperties.load(new FileInputStream(new File(pathPrefix + "properties/ui.other.properties")));
 			generalProperties.load(new FileInputStream(new File(pathPrefix + "properties/general.properties")));
 			MainFrame mainFrame = new MainFrame(uiPositionProperties, uiStylesProperties, uiOtherProperties, generalProperties);
+			// TODO bellow line set set the Window Size to maximised, Will uncomment soon
+//			mainFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 			mainFrame.shakeOnce();
 		} catch (Exception e) {
 		    e.printStackTrace();

@@ -26,6 +26,8 @@ public class MainPanel extends Panel {
     private JScrollPane scrollPane;
     private Panel sideMenu;
 
+    private MainFrame mainFrame;
+
     public Properties getUiPositionProperties() {
         return uiPositionProperties;
     }
@@ -79,10 +81,12 @@ public class MainPanel extends Panel {
         setPreferredSize(new Dimension(PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.MAIN_PANEL_WIDTH), currentPage.getHeight()
                 + footer.getHeight()));
         add(currentPage);
+        mainFrame.shakeOnce();
     }
 
-    public MainPanel(Properties uiPositionProperties, Properties uiStylesProperties, Properties uiOtherProperties, Properties generalProperties) {
+    public MainPanel(MainFrame mainFrame, Properties uiPositionProperties, Properties uiStylesProperties, Properties uiOtherProperties, Properties generalProperties) {
         super(null, null);
+        this.mainFrame = mainFrame;
         this.uiPositionProperties = uiPositionProperties;
         this.uiStylesProperties = uiStylesProperties;
         this.uiOtherProperties = uiOtherProperties;

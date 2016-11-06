@@ -53,6 +53,7 @@ public class TextBox extends JTextField {
         setBackground(backgroundColor);
         setFont(font);
         setForeground(fontColor);
+        setCaretColor(fontColor);
         addFocusListener(new OnFocusColorChanger(this, backgroundColor, focusColor));
     }
 

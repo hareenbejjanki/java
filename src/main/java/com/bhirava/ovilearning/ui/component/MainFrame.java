@@ -1,7 +1,6 @@
 package com.bhirava.ovilearning.ui.component;
 
 import java.awt.Dimension;
-import java.awt.Rectangle;
 import java.util.Properties;
 
 import javax.swing.JFrame;
@@ -32,7 +31,7 @@ public class MainFrame extends JFrame {
     }
 
     private void initComponents(Properties uiPositionProperties, Properties uiStylesProperties, Properties otherProperties, Properties generalProperties) {
-        MainPanel mainPanel = new MainPanel(uiPositionProperties, uiStylesProperties, otherProperties, generalProperties);
+        MainPanel mainPanel = new MainPanel(this, uiPositionProperties, uiStylesProperties, otherProperties, generalProperties);
         scrollPane = new JScrollPane(mainPanel);
         mainPanel.setScrollPane(scrollPane);
         setScrollPaneProperties(scrollPane, uiPositionProperties);
@@ -47,15 +46,18 @@ public class MainFrame extends JFrame {
 
     private void initProperties(Properties uiPositionProperties) {
         setResizable(false);
+//        setLocation(0, 0);
         setBounds(0, 0, PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FRAME_WIDTH), PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FRAME_HEIGHT));
     }
 
     public void shakeOnce() {
-        Rectangle visible = scrollPane.getVisibleRect();
-        visible.y = 10;
-        scrollPane.scrollRectToVisible(visible);
-//        visible.y = 0;
-//        scrollPane.scrollRectToVisible(visible);
+        scrollPane.getVerticalScrollBar().setValue(10);
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        scrollPane.getVerticalScrollBar().setValue(0);
     }
 
 }
