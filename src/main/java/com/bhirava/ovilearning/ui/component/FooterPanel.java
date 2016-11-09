@@ -17,9 +17,8 @@ public class FooterPanel extends Panel {
 		init();
 	}
 
-    private static Rectangle getBounds(Panel parentComponent) {
-        MainPanel mainFrame = (MainPanel) parentComponent;
-        Properties positionProperties = mainFrame.getUiPositionProperties();
+    private static Rectangle getBounds(MainPanel mainPanel) {
+        Properties positionProperties = mainPanel.getUiPositionProperties();
 
         return new Rectangle(0, 0, PropertyUtil.getInteger(positionProperties, UIConstants.Positions.MAIN_PANEL_WIDTH), getHeight(positionProperties));
     }
@@ -32,14 +31,13 @@ public class FooterPanel extends Panel {
 	private void addPanels() {
 	    CopyRightsPanel copyRightsPanel = new CopyRightsPanel(this, mainPanel);
 		FooterMenuPanel menuPanel = new FooterMenuPanel(this, mainPanel);
-		addChild(ChildName.MainPage.FooterPanel.COPY_RIGHTS_PANEL.name(), copyRightsPanel);
-		addChild(ChildName.MainPage.FooterPanel.MENU_PANEL.name(), menuPanel);
+		addChild(copyRightsPanel);
+		addChild(menuPanel);
 	}
 
 	private void initStyles() {
-		MainPanel mainFrame = (MainPanel) parentPanel;
-		Properties stylesProperties = mainFrame.getUiStylesProperties();
-		Properties positionProperties = mainFrame.getUiPositionProperties();
+		Properties stylesProperties = mainPanel.getUiStylesProperties();
+		Properties positionProperties = mainPanel.getUiPositionProperties();
 
 		setBackground(PropertyUtil.getColor(stylesProperties, UIConstants.Styles.FOOTER_BG_COLOR));
 

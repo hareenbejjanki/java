@@ -19,13 +19,12 @@ public class FooterMenuPanel extends Panel {
 
     private static final long serialVersionUID = 1L;
 
-    public FooterMenuPanel(Panel parentComponent, MainPanel mainPanel) {
-        super(ChildName.MainPage.FooterPanel.MENU_PANEL.name(), getBounds(parentComponent), parentComponent, mainPanel);
+    public FooterMenuPanel(Panel parentPanel, MainPanel mainPanel) {
+        super(ChildName.MainPage.FooterPanel.MENU_PANEL.name(), getBounds(mainPanel), parentPanel, mainPanel);
         init();
     }
 
     private void init() {
-        MainPanel mainPanel = (MainPanel) parentPanel.getParentPanel();
         Properties uiPositionProperties = mainPanel.getUiPositionProperties();
         Properties uiStylesProperties = mainPanel.getUiStylesProperties();
         Properties generalProperties = mainPanel.getGeneralProperties();
@@ -42,10 +41,10 @@ public class FooterMenuPanel extends Panel {
         Label emailLabel = getEmailLabel(infoLineLabel, uiPositionProperties, uiStylesProperties, generalProperties);
         Label emailTextLabel = getEmailTextLabel(infoLineLabel, emailLabel, uiPositionProperties, uiStylesProperties, generalProperties);
 
-        addChild(ChildName.MainPage.FooterPanel.LOGO.name(), logo);
-        addChild(ChildName.MainPage.FooterPanel.MENU1.name(), menu1);
-        addChild(ChildName.MainPage.FooterPanel.MENU2.name(), menu2);
-        addChild(ChildName.MainPage.FooterPanel.MENU3.name(), menu3);
+        addChild(logo);
+        addChild(menu1);
+        addChild(menu2);
+        addChild(menu3);
         addChild(ChildName.MainPage.FooterPanel.INFO_LINE.name(), infoLineLabel);
         addChild(ChildName.MainPage.FooterPanel.INFO_LINE_TEXT.name(), infoLineTextLabel);
         addChild(ChildName.MainPage.FooterPanel.EMAIL.name(), emailLabel);
@@ -193,8 +192,7 @@ public class FooterMenuPanel extends Panel {
         return label;
     }
 
-    private static Rectangle getBounds(Panel parentComponent) {
-        MainPanel mainPanel = (MainPanel) parentComponent.getParentPanel();
+    private static Rectangle getBounds(MainPanel mainPanel) {
         Properties uiPositionProperties = mainPanel.getUiPositionProperties();
         int width = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FRAME_WIDTH);
         int height = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FOOTER_MENU_HEIGHT);

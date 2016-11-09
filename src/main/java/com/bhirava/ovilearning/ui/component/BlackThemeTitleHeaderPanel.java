@@ -15,14 +15,13 @@ import com.bhirava.ovilearning.ui.util.PropertyUtil;
 public class BlackThemeTitleHeaderPanel extends ImageBackgroundPanel {
     private static final long serialVersionUID = 1L;
 
-    public BlackThemeTitleHeaderPanel(String header1Text, String header2Text, Panel parentComponent, MainPanel mainPanel) {
-        super("", getImagePath(parentComponent), getBounds(parentComponent), parentComponent, mainPanel);
+    public BlackThemeTitleHeaderPanel(String header1Text, String header2Text, Panel parentPanel, MainPanel mainPanel) {
+        super("", getImagePath(mainPanel), getBounds(mainPanel), parentPanel, mainPanel);
         init(header1Text, header2Text);
     }
 
-    private static String getImagePath(Panel parentComponent) {
-        MainPanel mainFrame = (MainPanel) parentComponent.getParentPanel();
-        Properties generalProperties = mainFrame.getGeneralProperties();
+    private static String getImagePath(MainPanel mainPanel) {
+        Properties generalProperties = mainPanel.getGeneralProperties();
         return generalProperties.getProperty(Constants.General.BLACK_THEAM_IMAGE_PATH);
     }
 
@@ -44,9 +43,8 @@ public class BlackThemeTitleHeaderPanel extends ImageBackgroundPanel {
         addChild(ChildName.LoginPage.HeaderPanel.LABEL2.name(), header2);
     }
 
-    private static Rectangle getBounds(Panel parentComponent) {
-        MainPanel mainFrame = (MainPanel) parentComponent.getParentPanel();
-        Properties positionProperties = mainFrame.getUiPositionProperties();
+    private static Rectangle getBounds(MainPanel mainPanel) {
+        Properties positionProperties = mainPanel.getUiPositionProperties();
 
         return new Rectangle(0, 0, PropertyUtil.getInteger(positionProperties, UIConstants.Positions.MAIN_PANEL_WIDTH), PropertyUtil.getInteger(
                 positionProperties, UIConstants.Positions.LOGIN_HEADER_HEIGHT));

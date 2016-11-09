@@ -16,13 +16,12 @@ import com.bhirava.ovilearning.ui.util.PropertyUtil;
 public class VideoListTopicsPanel extends Panel {
     private static final long serialVersionUID = 1L;
 
-    public VideoListTopicsPanel(Panel parentComponent, MainPanel mainPanel) {
-        super(ChildName.VideoListPage.MainPanel.TOPICS_PANEL.name(), getBounds(parentComponent), parentComponent, mainPanel);
+    public VideoListTopicsPanel(Panel parentPanel, MainPanel mainPanel) {
+        super(ChildName.VideoListPage.MainPanel.TOPICS_PANEL.name(), getBounds(mainPanel), parentPanel, mainPanel);
         init();
     }
 
     private void init() {
-        MainPanel mainPanel = (MainPanel) parentPanel.getParentPanel().getParentPanel();
         Properties uiStylesProperties = mainPanel.getUiStylesProperties();
         Properties uiPositionProperties = mainPanel.getUiPositionProperties();
         Properties generalProperties = mainPanel.getGeneralProperties();
@@ -33,7 +32,7 @@ public class VideoListTopicsPanel extends Panel {
         headerPanel.setBackground(PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.VIDEOLIST_MAIN_PANEL_TOPICS_BG_COLOR));
         Label topicsLabel = getTopicsLabel(headerPanel, uiPositionProperties, uiStylesProperties, generalProperties);
         headerPanel.addChild(ChildName.General.LABEL.name(), topicsLabel);
-        addChild(ChildName.VideoListPage.MainPanel.TOPICS_HEADING_PANEL.name(), headerPanel);
+        addChild(headerPanel);
 
         initTopics();
     }
@@ -43,10 +42,10 @@ public class VideoListTopicsPanel extends Panel {
         TopicPanel topicPanel2 = new TopicPanel(2, this, mainPanel);
         TopicPanel topicPanel3 = new TopicPanel(3, this, mainPanel);
         TopicPanel topicPanel4 = new TopicPanel(4, this, mainPanel);
-        addChild(ChildName.VideoListPage.MainPanel.TOPICS_PANEL.name() + 1, topicPanel1);
-        addChild(ChildName.VideoListPage.MainPanel.TOPICS_PANEL.name() + 2, topicPanel2);
-        addChild(ChildName.VideoListPage.MainPanel.TOPICS_PANEL.name() + 3, topicPanel3);
-        addChild(ChildName.VideoListPage.MainPanel.TOPICS_PANEL.name() + 4, topicPanel4);
+        addChild(topicPanel1);
+        addChild(topicPanel2);
+        addChild(topicPanel3);
+        addChild(topicPanel4);
     }
 
     private Label getTopicsLabel(Panel headerPanel, Properties uiPositionProperties, Properties uiStylesProperties, Properties generalProperties) {
@@ -69,8 +68,7 @@ public class VideoListTopicsPanel extends Panel {
         return new Rectangle(0, 0, width, height);
     }
 
-    private static Rectangle getBounds(Panel parentComponent) {
-        MainPanel mainPanel = (MainPanel) parentComponent.getParentPanel().getParentPanel();
+    private static Rectangle getBounds(MainPanel mainPanel) {
         Properties uiPositionProperties = mainPanel.getUiPositionProperties();
 
         int x = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_MAIN_PANEL_TOPICS_X);

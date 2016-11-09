@@ -17,15 +17,15 @@ import com.bhirava.ovilearning.ui.util.PropertyUtil;
 public class VideoListPanel extends Panel {
     private static final long serialVersionUID = 1L;
 
-    public VideoListPanel(Panel parentComponent, MainPanel mainPanel) {
-        super(ChildName.VideoListPage.Child.MAIN_PANEL.name(), getBounds(parentComponent), parentComponent, mainPanel);
+    public VideoListPanel(Panel parentPanel, MainPanel mainPanel) {
+        super(ChildName.VideoListPage.Child.MAIN_PANEL.name(), getBounds(mainPanel), parentPanel, mainPanel);
         init();
     }
 
     private void init() {
         initLeft();
         VideoListTopicsPanel topicsPanel = new VideoListTopicsPanel(this, mainPanel);
-        addChild(ChildName.VideoListPage.MainPanel.TOPICS_PANEL.name(), topicsPanel);
+        addChild(topicsPanel);
     }
 
     private void initLeft() {
@@ -50,12 +50,12 @@ public class VideoListPanel extends Panel {
 
         addChild(ChildName.VideoListPage.MainPanel.PROGRESS_LABEL.name(), progressLabel);
         addChild(ChildName.VideoListPage.MainPanel.PROGRESS_VALUE_LABEL.name(), progressValueLabel);
-        addChild(ChildName.VideoListPage.MainPanel.PROGRESS_BAR.name(), progressBar);
+        addChild(progressBar);
         addChild(ChildName.VideoListPage.MainPanel.QUIZZ_VALUE_LABEL.name(), quizzValueLabel);
         addChild(ChildName.VideoListPage.MainPanel.QUIZZ_LABEL.name(), quizzLabel);
         addChild(ChildName.VideoListPage.MainPanel.ASSIGNMENT_VALUE_LABEL.name(), assignmentValueLabel);
         addChild(ChildName.VideoListPage.MainPanel.ASSIGNMENT_LABEL.name(), assignmentLabel);
-        addChild(ChildName.VideoListPage.MainPanel.IMAGE.name(), imagePanel);
+        addChild(imagePanel);
     }
 
     private Rectangle getImageBounds(Label progressLabel, Panel progressBar, Label quizzLabel, Properties uiPositionProperties) {
@@ -173,8 +173,7 @@ public class VideoListPanel extends Panel {
         return label;
     }
 
-    private static Rectangle getBounds(Panel parentComponent) {
-        MainPanel mainPanel = (MainPanel) parentComponent.getParentPanel();
+    private static Rectangle getBounds(MainPanel mainPanel) {
         Properties uiPositionProperties = mainPanel.getUiPositionProperties();
         int x = 0;
         int y = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_HEADER_HEIGHT)

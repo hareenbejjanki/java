@@ -31,14 +31,14 @@ public class Button extends Panel {
     }
 
     public Button(String name, String text, Font font, Color fontColor, Color borderColor, int borderWidth, Color borderFocusColor,
-            Color backgroundColor, Rectangle bounds, Panel parentComponent, MainPanel mainPanel) {
-        this(name, text, font, fontColor, borderColor, borderWidth, borderFocusColor, backgroundColor, null, bounds, parentComponent, mainPanel);
+            Color backgroundColor, Rectangle bounds, Panel parentPanel, MainPanel mainPanel) {
+        this(name, text, font, fontColor, borderColor, borderWidth, borderFocusColor, backgroundColor, null, bounds, parentPanel, mainPanel);
     }
 
     public Button(String name, String text, Font font, Color fontColor, Color borderColor, int borderWidth, Color borderFocusColor,
-            Color backgroundColor, Color backgroundHoverColor, Rectangle bounds, Panel parentComponent, MainPanel mainPanel) {
-        super(name, bounds, parentComponent, mainPanel);
-        this.parentPanel = parentComponent;
+            Color backgroundColor, Color backgroundHoverColor, Rectangle bounds, Panel parentPanel, MainPanel mainPanel) {
+        super(name, bounds, parentPanel, mainPanel);
+        this.parentPanel = parentPanel;
         this.fontColor = fontColor;
         this.borderColor = borderColor;
         this.borderWidth = borderWidth;

@@ -19,8 +19,8 @@ import com.bhirava.ovilearning.ui.util.PropertyUtil;
 public class TopicPanel extends Panel {
     private static final long serialVersionUID = 1L;
 
-    public TopicPanel(int count, Panel parentComponent, MainPanel mainPanel) {
-        super(ChildName.VideoListPage.MainPanel.TOPICS_PANEL.name() + count, getBounds(parentComponent, count), parentComponent, mainPanel);
+    public TopicPanel(int count, Panel parentPanel, MainPanel mainPanel) {
+        super(ChildName.VideoListPage.MainPanel.TOPICS_PANEL.name() + count, getBounds(mainPanel, count), parentPanel, mainPanel);
         init(count);
     }
 
@@ -43,11 +43,11 @@ public class TopicPanel extends Panel {
         button.addActionListener(new VideoPageNavigator(mainPanel, generalProperties.getProperty(Constants.General.VIDEOLIST_TOPIC + count), PropertyUtil
                 .getPathAsURI(generalProperties, Constants.General.VIDEOLIST_TOPIC + count + Constants.General.VIDEOLIST_TOPIC_VIDEO_PATH_POSTFIX)));
 
-        addChild(ChildName.VideoListPage.TopicPanel.NUMBER_PANEL.name(), countPanel);
-        addChild(ChildName.VideoListPage.TopicPanel.LOGO.name(), icon);
+        addChild(countPanel);
+        addChild(icon);
         addChild(ChildName.VideoListPage.TopicPanel.TOPIC_NAME.name(), titleLabel);
         addChild(ChildName.VideoListPage.TopicPanel.TOPIC_DURATION.name(), durationLabel);
-        addChild(ChildName.VideoListPage.TopicPanel.BUTTON.name(), button);
+        addChild(button);
     }
 
     private Button getButton(int count, Properties uiPositionProperties, Properties uiStylesProperties, Properties generalProperties) {
@@ -120,8 +120,7 @@ public class TopicPanel extends Panel {
         return label;
     }
 
-    private static Rectangle getBounds(Panel parentComponent, int count) {
-        MainPanel mainPanel = (MainPanel) parentComponent.getParentPanel().getParentPanel().getParentPanel();
+    private static Rectangle getBounds(MainPanel mainPanel, int count) {
         Properties uiPositionProperties = mainPanel.getUiPositionProperties();
 
         int x = 0;

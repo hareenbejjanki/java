@@ -1,6 +1,5 @@
 package com.bhirava.ovilearning.ui.component.login;
 
-import java.awt.Component;
 import java.awt.Rectangle;
 import java.util.Properties;
 
@@ -20,8 +19,7 @@ public class LoginPage extends Panel {
         init();
     }
 
-    private static Rectangle getBounds(Panel parentComponent) {
-        MainPanel mainPanel = (MainPanel) parentComponent;
+    private static Rectangle getBounds(MainPanel mainPanel) {
         Properties positionProperties = mainPanel.getUiPositionProperties();
 
         return new Rectangle(0, 0, PropertyUtil.getInteger(positionProperties, UIConstants.Positions.MAIN_PANEL_WIDTH), getHeight(positionProperties));
@@ -38,21 +36,20 @@ public class LoginPage extends Panel {
     }
 
     private void addPanels() {
-        addChild(ChildName.LoginPage.Child.HEADER_PANEL.name(), getHeaderPanel());
-        addChild(ChildName.LoginPage.Child.VOID_LOGIN_PANEL.name(), getVoidLoginPanel());
+        addChild(getHeaderPanel());
+        addChild(getVoidLoginPanel());
     }
 
-    private Component getVoidLoginPanel() {
+    private Panel getVoidLoginPanel() {
         Panel panel = new Panel(ChildName.LoginPage.Child.VOID_LOGIN_PANEL.name(), getVoidLoginPanelBounds(), this, mainPanel);
         ImageBackgroundPanel loginPanel = new LoginPanel(panel, mainPanel);
         loginPanel.makeCenterPositioned();
-        panel.addChild(ChildName.LoginPage.LoginPanel.LOGIN_PANEL.name(), loginPanel);
+        panel.addChild(loginPanel);
         return panel;
     }
 
     private Rectangle getVoidLoginPanelBounds() {
-        MainPanel mainFrame = (MainPanel) parentPanel;
-        Properties positionProperties = mainFrame.getUiPositionProperties();
+        Properties positionProperties = mainPanel.getUiPositionProperties();
 
         Rectangle bounds = new Rectangle(0, PropertyUtil.getInteger(positionProperties, UIConstants.Positions.LOGIN_HEADER_HEIGHT), PropertyUtil.getInteger(
                 positionProperties, UIConstants.Positions.FRAME_WIDTH), PropertyUtil.getInteger(positionProperties,
@@ -61,7 +58,7 @@ public class LoginPage extends Panel {
         return bounds;
     }
 
-    private Component getHeaderPanel() {
+    private Panel getHeaderPanel() {
         return new LoginHeaderPanel(this, mainPanel);
     }
 

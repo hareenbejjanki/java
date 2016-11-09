@@ -41,13 +41,12 @@ public class VideoListPage extends Panel {
     }
 
     private void addPanels() {
-        addChild(ChildName.VideoListPage.Child.HEADER_PANEL.name(), getHeaderPanel());
-        addChild(ChildName.VideoListPage.Child.NAVIGATION_PANEL.name(), getNavigationPanel());
-        addChild(ChildName.VideoListPage.Child.MAIN_PANEL.name(), getVideoMainPanel());
+        addChild(getHeaderPanel());
+        addChild(getNavigationPanel());
+        addChild(getVideoMainPanel());
     }
 
-    private Component getNavigationPanel() {
-        MainPanel mainPanel = (MainPanel) parentPanel;
+    private Panel getNavigationPanel() {
         Properties uiPositionProperties = mainPanel.getUiPositionProperties();
         Properties uiStylesProperties = mainPanel.getUiStylesProperties();
         Properties generalProperties = mainPanel.getGeneralProperties();
@@ -79,11 +78,11 @@ public class VideoListPage extends Panel {
         return label;
     }
 
-    private Component getVideoMainPanel() {
+    private Panel getVideoMainPanel() {
         return new VideoListPanel(this, mainPanel);
     }
 
-    private Component getHeaderPanel() {
+    private Panel getHeaderPanel() {
         return new VideoListHeaderPanel(this, mainPanel);
     }
 

@@ -7,8 +7,8 @@ import com.bhirava.ovilearning.ui.component.MainPanel;
 public class VideoPanel extends Panel {
     private static final long serialVersionUID = 1L;
 
-    public VideoPanel(String name, String vedioPath, Rectangle bounds, Panel parentComponent, MainPanel mainPanel) {
-        super(name, bounds, parentComponent, mainPanel);
+    public VideoPanel(String name, String vedioPath, Rectangle bounds, Panel parentPanel, MainPanel mainPanel) {
+        super(name, bounds, parentPanel, mainPanel);
         init(vedioPath, bounds);
     }
 

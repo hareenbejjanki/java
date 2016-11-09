@@ -28,12 +28,12 @@ public class VerticallyMovingPanel extends Panel {
         return scrollColor;
     }
 
-    public VerticallyMovingPanel(String name, Rectangle bounds, JScrollPane scrollPane, Point initialLocation, Color initialColor, Panel parentComponent, MainPanel mainPanel) {
-        this(name, bounds, scrollPane, initialLocation, initialColor, null, parentComponent, mainPanel);
+    public VerticallyMovingPanel(String name, Rectangle bounds, JScrollPane scrollPane, Point initialLocation, Color initialColor, Panel parentPanel, MainPanel mainPanel) {
+        this(name, bounds, scrollPane, initialLocation, initialColor, null, parentPanel, mainPanel);
     }
 
-    public VerticallyMovingPanel(String name, Rectangle bounds, JScrollPane scrollPane, Point initialLocation, Color initialColor, Color scrollColor, Panel parentComponent, MainPanel mainPanel) {
-        super(name, bounds, parentComponent, mainPanel);
+    public VerticallyMovingPanel(String name, Rectangle bounds, JScrollPane scrollPane, Point initialLocation, Color initialColor, Color scrollColor, Panel parentPanel, MainPanel mainPanel) {
+        super(name, bounds, parentPanel, mainPanel);
         this.initialLocation = initialLocation;
         this.initialColor = initialColor;
         this.scrollColor = scrollColor;

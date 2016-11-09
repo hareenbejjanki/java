@@ -17,7 +17,7 @@ import com.bhirava.ovilearning.ui.event.OnFocusColorChanger;
 public class TextBox extends JTextField {
     private static final long serialVersionUID = 1L;
 
-    protected Panel parentComponent;
+    protected Panel parentPanel;
     private Color fontColor;
     private Color borderColor;
     private int borderWidth;
@@ -26,16 +26,16 @@ public class TextBox extends JTextField {
     private Color focusColor;
     private String waterMark;
 
-    public Component getParentComponent() {
-        return parentComponent;
+    public Component getParentPanel() {
+        return parentPanel;
     }
 
-    public TextBox(Panel parentComponent, Font font, Color fontColor, Color borderColor, int borderWidth, Color backgroundColor, Color focusColor, Rectangle bounds) {
-        this(parentComponent, font, fontColor, borderColor, borderWidth, backgroundColor, focusColor, "", bounds);
+    public TextBox(Panel parentPanel, Font font, Color fontColor, Color borderColor, int borderWidth, Color backgroundColor, Color focusColor, Rectangle bounds) {
+        this(parentPanel, font, fontColor, borderColor, borderWidth, backgroundColor, focusColor, "", bounds);
     }
 
-    public TextBox(Panel parentComponent, Font font, Color fontColor, Color borderColor, int borderWidth, Color backgroundColor, Color focusColor, String waterMark, Rectangle bounds) {
-        this.parentComponent = parentComponent;
+    public TextBox(Panel parentPanel, Font font, Color fontColor, Color borderColor, int borderWidth, Color backgroundColor, Color focusColor, String waterMark, Rectangle bounds) {
+        this.parentPanel = parentPanel;
         this.fontColor = fontColor;
         this.borderColor = borderColor;
         this.borderWidth = borderWidth;

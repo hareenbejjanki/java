@@ -11,15 +11,15 @@ import com.bhirava.ovilearning.ui.event.OnHoverColorChanger;
 
 public class Label extends JLabel {
     private static final long serialVersionUID = 1L;
-    private Panel parentComponent;
+    private Panel parentPanel;
 
-    public Label(Panel parentComponent, String text, Font font, Color foreground, Color background) {
-        this(parentComponent, text, font, foreground, background, null);
+    public Label(Panel parentPanel, String text, Font font, Color foreground, Color background) {
+        this(parentPanel, text, font, foreground, background, null);
     }
 
-    public Label(Panel parentComponent, String text, Font font, Color foreground, Color background, Color onHoverColor) {
+    public Label(Panel parentPanel, String text, Font font, Color foreground, Color background, Color onHoverColor) {
         super(text);
-        this.parentComponent = parentComponent;
+        this.parentPanel = parentPanel;
         setFont(font);
         setForeground(foreground);
         setBackground(background);
@@ -33,20 +33,20 @@ public class Label extends JLabel {
 
     public void makeHorizantlyCenterPositioned(int y) {
         Dimension size = getPreferredSize();
-        int x = (int) parentComponent.getWidth() / 2 - size.width / 2;
+        int x = (int) parentPanel.getWidth() / 2 - size.width / 2;
         setBounds(x, y, size.width, size.height);
     }
 
     public void makeVerticallyCenterPositioned(int x) {
         Dimension size = getPreferredSize();
-        int y = (int) parentComponent.getHeight() / 2 - size.height / 2;
+        int y = (int) parentPanel.getHeight() / 2 - size.height / 2;
         setBounds(x, y, size.width, size.height);
     }
 
     public void makeCenterPositioned() {
         Dimension size = getPreferredSize();
-        int x = (int) parentComponent.getWidth() / 2 - size.width / 2;
-        int y = (int) parentComponent.getHeight() / 2 - size.height / 2;
+        int x = (int) parentPanel.getWidth() / 2 - size.width / 2;
+        int y = (int) parentPanel.getHeight() / 2 - size.height / 2;
         setBounds(x, y, size.width, size.height);
     }
 }

@@ -9,11 +9,11 @@ import com.bhirava.ovilearning.ui.component.MainPanel;
 public class ImageBackgroundPanel extends LayeredPanel {
     private static final long serialVersionUID = 1L;
 
-    public ImageBackgroundPanel(String name, String imagePath, Rectangle bounds, Panel parentComponent, MainPanel mainPanel) {
-        super(name, bounds, parentComponent, mainPanel);
+    public ImageBackgroundPanel(String name, String imagePath, Rectangle bounds, Panel parentPanel, MainPanel mainPanel) {
+        super(name, bounds, parentPanel, mainPanel);
         layeredPane.setBackground(UIConstants.Styles.TRANSPARENT_COLOR);
         setBackground(UIConstants.Styles.TRANSPARENT_COLOR);
-        addChild(Constants.General.BACKGROUND, new ImagePanel(Constants.General.BACKGROUND, imagePath, bounds, this, mainPanel));
+        addChild(new ImagePanel(Constants.General.BACKGROUND, imagePath, bounds, this, mainPanel));
     }
 
 }

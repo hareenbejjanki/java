@@ -34,6 +34,11 @@ public class Panel extends JPanel {
 		return childComponents;
 	}
 
+    public void addChild(Panel panel) {
+        childComponents.put(panel.getName(), panel);
+        add(panel);
+    }
+
     public void addChild(String name, Component child) {
 		childComponents.put(name, child);
 		add(child);

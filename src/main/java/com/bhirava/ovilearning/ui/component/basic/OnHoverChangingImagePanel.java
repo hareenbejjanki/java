@@ -15,8 +15,8 @@ import com.bhirava.ovilearning.ui.event.OnHoverImageChanger;
 public class OnHoverChangingImagePanel extends Panel {
     private static final long serialVersionUID = 1L;
 
-    public OnHoverChangingImagePanel(String name, String imagePath, String hoverImagePath, Rectangle bounds, Panel parentComponent, MainPanel mainPanel) {
-        super(name, bounds, parentComponent, mainPanel);
+    public OnHoverChangingImagePanel(String name, String imagePath, String hoverImagePath, Rectangle bounds, Panel parentPanel, MainPanel mainPanel) {
+        super(name, bounds, parentPanel, mainPanel);
         setBackground(UIConstants.Styles.TRANSPARENT_COLOR);
         Icon image = new ImageIcon(Toolkit.getDefaultToolkit().createImage(imagePath));
         Icon hoverImage = new ImageIcon(Toolkit.getDefaultToolkit().createImage(hoverImagePath));

@@ -15,22 +15,20 @@ import com.bhirava.ovilearning.ui.util.PropertyUtil;
 public class LoginHeaderPanel extends ImageBackgroundPanel {
     private static final long serialVersionUID = 1L;
 
-    public LoginHeaderPanel(Panel parentComponent, MainPanel mainPanel) {
-        super(ChildName.LoginPage.Child.HEADER_PANEL.name(), getImagePath(parentComponent), getBounds(parentComponent), parentComponent, mainPanel);
+    public LoginHeaderPanel(Panel parentPanel, MainPanel mainPanel) {
+        super(ChildName.LoginPage.Child.HEADER_PANEL.name(), getImagePath(mainPanel), getBounds(mainPanel), parentPanel, mainPanel);
         init();
     }
 
-    private static String getImagePath(Panel parentComponent) {
-        MainPanel mainFrame = (MainPanel) parentComponent.getParentPanel();
-        Properties generalProperties = mainFrame.getGeneralProperties();
+    private static String getImagePath(MainPanel mainPanel) {
+        Properties generalProperties = mainPanel.getGeneralProperties();
         return generalProperties.getProperty(Constants.General.LOGIN_HEADER_IMAGE_PATH);
     }
 
     private void init() {
-        MainPanel mainFrame = (MainPanel) parentPanel.getParentPanel();
-        Properties uiOtherProperties = mainFrame.getUiOtherProperties();
-        Properties uiStylesProperties = mainFrame.getUiStylesProperties();
-        Properties uiPositionProperties = mainFrame.getUiPositionProperties();
+        Properties uiOtherProperties = mainPanel.getUiOtherProperties();
+        Properties uiStylesProperties = mainPanel.getUiStylesProperties();
+        Properties uiPositionProperties = mainPanel.getUiPositionProperties();
 
         Label header1 = new Label(this, uiOtherProperties.getProperty(UIConstants.Other.LOGIN_HEADER1_TEXT), PropertyUtil.getFont(uiStylesProperties,
                 UIConstants.Styles.LOGIN_HEADER1_FONT), PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.LOGIN_HEADER1_FONT_COLOR),
@@ -45,9 +43,8 @@ public class LoginHeaderPanel extends ImageBackgroundPanel {
         addChild(ChildName.LoginPage.HeaderPanel.LABEL2.name(), header2);
     }
 
-    private static Rectangle getBounds(Panel parentComponent) {
-        MainPanel mainFrame = (MainPanel) parentComponent.getParentPanel();
-        Properties positionProperties = mainFrame.getUiPositionProperties();
+    private static Rectangle getBounds(MainPanel mainPanel) {
+        Properties positionProperties = mainPanel.getUiPositionProperties();
 
         return new Rectangle(0, 0, PropertyUtil.getInteger(positionProperties, UIConstants.Positions.MAIN_PANEL_WIDTH), PropertyUtil.getInteger(
                 positionProperties, UIConstants.Positions.LOGIN_HEADER_HEIGHT));

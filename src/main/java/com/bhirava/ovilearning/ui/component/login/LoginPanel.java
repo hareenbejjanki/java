@@ -21,13 +21,12 @@ public class LoginPanel extends ImageBackgroundPanel {
 
     private static final long serialVersionUID = 1L;
 
-    public LoginPanel(Panel parentComponent, MainPanel mainPanel) {
-        super(ChildName.LoginPage.LoginPanel.LOGIN_PANEL.name(), getImagePath(parentComponent), getBounds(parentComponent), parentComponent, mainPanel);
+    public LoginPanel(Panel parentPanel, MainPanel mainPanel) {
+        super(ChildName.LoginPage.LoginPanel.LOGIN_PANEL.name(), getImagePath(mainPanel), getBounds(mainPanel), parentPanel, mainPanel);
         init();
     }
 
     private void init() {
-        MainPanel mainPanel = (MainPanel) parentPanel.getParentPanel().getParentPanel();
         Properties generalProperties = mainPanel.getGeneralProperties();
         Properties uiStylesProperties = mainPanel.getUiStylesProperties();
         Properties uiPositionProperties = mainPanel.getUiPositionProperties();
@@ -120,15 +119,13 @@ public class LoginPanel extends ImageBackgroundPanel {
         return new TextBox(this, font, fontColor, borderColor, borderSize, UIConstants.Styles.TRANSPARENT_COLOR, focusColor, text, bounds);
     }
 
-    private static Rectangle getBounds(Panel parentComponent) {
-        MainPanel mainPanel = (MainPanel) parentComponent.getParentPanel().getParentPanel();
+    private static Rectangle getBounds(MainPanel mainPanel) {
         Properties uiPositionProperties = mainPanel.getUiPositionProperties();
         return new Rectangle(0, 0, PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_LOGIN_PANEL_WIDTH), PropertyUtil.getInteger(
                 uiPositionProperties, UIConstants.Positions.LOGIN_LOGIN_PANEL_HEIGHT));
     }
 
-    private static String getImagePath(Panel parentComponent) {
-        MainPanel mainPanel = (MainPanel) ((Panel) parentComponent.getParentPanel()).getParentPanel();
+    private static String getImagePath(MainPanel mainPanel) {
         Properties generalProperties = mainPanel.getGeneralProperties();
         return generalProperties.getProperty(Constants.General.LOGIN_PANEL_IMAGE_PATH);
     }

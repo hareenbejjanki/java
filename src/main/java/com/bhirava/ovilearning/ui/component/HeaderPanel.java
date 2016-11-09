@@ -25,23 +25,20 @@ public class HeaderPanel extends VerticallyMovingPanel {
         init();
     }
 
-    private static Rectangle getBounds(Panel parentComponent) {
-        MainPanel mainFrame = (MainPanel) parentComponent;
-        Properties positionProperties = mainFrame.getUiPositionProperties();
+    private static Rectangle getBounds(MainPanel mainPanel) {
+        Properties positionProperties = mainPanel.getUiPositionProperties();
 
         return new Rectangle(0, 0, PropertyUtil.getInteger(positionProperties, UIConstants.Positions.MAIN_PANEL_WIDTH), PropertyUtil.getInteger(
                 positionProperties, UIConstants.Positions.HEADER_HEIGHT));
     }
 
-    private static Color getScrollColor(Panel parentComponent) {
-        MainPanel mainFrame = (MainPanel) parentComponent;
-        Properties uiStylesProperties = mainFrame.getUiStylesProperties();
+    private static Color getScrollColor(MainPanel mainPanel) {
+        Properties uiStylesProperties = mainPanel.getUiStylesProperties();
         return PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.HEADER_BG_COLOR);
     }
 
-    private static Color getInitialColor(Panel parentComponent) {
-        MainPanel mainFrame = (MainPanel) parentComponent;
-        Properties uiStylesProperties = mainFrame.getUiStylesProperties();
+    private static Color getInitialColor(MainPanel mainPanel) {
+        Properties uiStylesProperties = mainPanel.getUiStylesProperties();
         return PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.HEADER_BG_INIT_COLOR);
     }
 
@@ -58,8 +55,8 @@ public class HeaderPanel extends VerticallyMovingPanel {
         Label tourLabel = getTourLabel(registerLabel, loginLabel, uiPositionProperties, uiStylesProperties, generalProperties);
         Label mediumLabel = getMediumLabel(registerLabel, loginLabel, tourLabel, uiPositionProperties, uiStylesProperties, generalProperties);
 
-        addChild(ChildName.MainPage.HeaderPanel.LOGO.name(), logo);
-        addChild(ChildName.MainPage.HeaderPanel.SEARCH.name(), searchPanel);
+        addChild(logo);
+        addChild(searchPanel);
         addChild(ChildName.MainPage.HeaderPanel.REGISTER.name(), registerLabel);
         addChild(ChildName.MainPage.HeaderPanel.LOGIN.name(), loginLabel);
         addChild(ChildName.MainPage.HeaderPanel.TOUR.name(), tourLabel);

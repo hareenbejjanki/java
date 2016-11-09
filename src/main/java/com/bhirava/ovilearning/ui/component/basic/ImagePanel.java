@@ -21,8 +21,8 @@ public class ImagePanel extends Panel {
         return image;
     }
 
-    public ImagePanel(String name, String imagePath, Rectangle bounds, Panel parentComponent, MainPanel mainPanel) {
-        super(name, bounds, parentComponent, mainPanel);
+    public ImagePanel(String name, String imagePath, Rectangle bounds, Panel parentPanel, MainPanel mainPanel) {
+        super(name, bounds, parentPanel, mainPanel);
         this.bounds = bounds;
         try {
             this.image = ImageIO.read(new File(System.getenv("OVILEARNING_HOME"), imagePath));

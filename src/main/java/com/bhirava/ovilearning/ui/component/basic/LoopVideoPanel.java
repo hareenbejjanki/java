@@ -7,8 +7,8 @@ import com.bhirava.ovilearning.ui.component.MainPanel;
 public class LoopVideoPanel extends Panel {
     private static final long serialVersionUID = 1L;
 
-    public LoopVideoPanel(String name, String vedioPath, Rectangle bounds, Panel parentComponent, MainPanel mainPanel) {
-        super(name, bounds, parentComponent, mainPanel);
+    public LoopVideoPanel(String name, String vedioPath, Rectangle bounds, Panel parentPanel, MainPanel mainPanel) {
+        super(name, bounds, parentPanel, mainPanel);
         init(vedioPath, bounds);
     }
 

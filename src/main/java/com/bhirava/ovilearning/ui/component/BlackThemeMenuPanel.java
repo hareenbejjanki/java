@@ -6,8 +6,6 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.Properties;
 
-import javax.swing.JScrollPane;
-
 import com.bhirava.ovilearning.constants.ChildName;
 import com.bhirava.ovilearning.constants.Constants;
 import com.bhirava.ovilearning.constants.UIConstants;
@@ -56,8 +54,8 @@ public class BlackThemeMenuPanel extends VerticallyMovingPanel {
         Label tourLabel = getTourLabel(registerLabel, loginLabel);
         Label mediumLabel = getMediumLabel(registerLabel, loginLabel, tourLabel);
 
-        addChild(ChildName.MainPage.HeaderPanel.LOGO.name(), logo);
-        addChild(ChildName.MainPage.HeaderPanel.SEARCH.name(), searchPanel);
+        addChild(logo);
+        addChild(searchPanel);
         addChild(ChildName.MainPage.HeaderPanel.REGISTER.name(), registerLabel);
         addChild(ChildName.MainPage.HeaderPanel.LOGIN.name(), loginLabel);
         addChild(ChildName.MainPage.HeaderPanel.TOUR.name(), tourLabel);

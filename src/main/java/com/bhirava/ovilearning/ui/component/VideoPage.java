@@ -31,7 +31,7 @@ public class VideoPage extends Panel {
         videoPanel.setLocation(videoPanel.getBounds().x, videoPanel.getBounds().y + 70);
         Label label = getTitleLabel(title, uiPositionProperties, uiStylesProperties, generalProperties);
         label.setLocation(videoPanel.getBounds().x, videoPanel.getBounds().y + 45);
-        addChild("DUMMY", videoPanel);
+        addChild(videoPanel);
     }
 
     private Label getTitleLabel(String title, Properties uiPositionProperties, Properties uiStylesProperties, Properties generalProperties) {

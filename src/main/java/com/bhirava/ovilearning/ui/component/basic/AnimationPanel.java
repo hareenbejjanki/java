@@ -19,7 +19,7 @@ public class AnimationPanel extends Panel {
 		this.animations = animations;
 	}
 
-	public AnimationPanel(String name, Rectangle bounds, Panel parentComponent, MainPanel mainPanel) {
-		super(name, bounds, parentComponent, mainPanel);
+	public AnimationPanel(String name, Rectangle bounds, Panel parentPanel, MainPanel mainPanel) {
+		super(name, bounds, parentPanel, mainPanel);
 	}
 }

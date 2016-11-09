@@ -12,8 +12,8 @@ import com.bhirava.ovilearning.ui.component.MainPanel;
 public class VerticalTextMenuPanel extends Panel {
     private static final long serialVersionUID = 1L;
 
-    public VerticalTextMenuPanel(String name, Color background, String heading, Font headingFont, Color headingColor, List<String> menu, Font menuFont, Color menuColor, Color menuHoverColor, int margin, Rectangle bounds, Panel parentComponent, MainPanel mainPanel) {
-        super(name, bounds, parentComponent, mainPanel);
+    public VerticalTextMenuPanel(String name, Color background, String heading, Font headingFont, Color headingColor, List<String> menu, Font menuFont, Color menuColor, Color menuHoverColor, int margin, Rectangle bounds, Panel parentPanel, MainPanel mainPanel) {
+        super(name, bounds, parentPanel, mainPanel);
         init(background, heading, headingFont, headingColor, menu, menuFont, menuColor, menuHoverColor, margin);
     }
 
@@ -25,7 +25,7 @@ public class VerticalTextMenuPanel extends Panel {
         y += margin;
 
         addChild(ChildName.General.HEADING.name(), headingLabel);
-        addChild(ChildName.General.SPLIT.name(), line);
+        addChild(line);
         for (String menuItem : menu) {
             Label menuItemLabel = new Label(this, menuItem, menuFont, menuColor, UIConstants.Styles.TRANSPARENT_COLOR, menuHoverColor);
             menuItemLabel.setLocation(0, y);
