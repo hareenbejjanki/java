@@ -35,7 +35,7 @@ public class ChildName {
     }
 
     public enum General {
-        CENTER_PANEL, BUTTON, IMAGE, LABEL, HEADING, SPLIT
+        CENTER_PANEL, BUTTON, IMAGE, LABEL, HEADING, SPLIT, FOOTER, HEADER
     }
 
     public static class MainPage {

@@ -16,13 +16,13 @@ public class CopyRightsPanel extends Panel {
 
     private static final long serialVersionUID = 1L;
 
-    public CopyRightsPanel(Panel parentComponent) {
-        super(parentComponent, getBounds(parentComponent));
+    public CopyRightsPanel(Panel parentComponent, MainPanel mainPanel) {
+        super(ChildName.MainPage.FooterPanel.COPY_RIGHTS_PANEL.name(), getBounds(parentComponent), parentComponent, mainPanel);
         init();
     }
 
     private void init() {
-        MainPanel mainPanel = (MainPanel) parentComponent.getParentComponent();
+        MainPanel mainPanel = (MainPanel) parentPanel.getParentPanel();
         Properties uiPositionProperties = mainPanel.getUiPositionProperties();
         Properties uiStylesProperties = mainPanel.getUiStylesProperties();
         Properties generalProperties = mainPanel.getGeneralProperties();
@@ -46,7 +46,7 @@ public class CopyRightsPanel extends Panel {
     }
 
     private static Rectangle getBounds(Panel parentComponent) {
-        MainPanel mainPanel = (MainPanel) parentComponent.getParentComponent();
+        MainPanel mainPanel = (MainPanel) parentComponent.getParentPanel();
         Properties uiPositionProperties = mainPanel.getUiPositionProperties();
         int y = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FOOTER_MENU_HEIGHT);
         int width = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FRAME_WIDTH);

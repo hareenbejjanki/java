@@ -21,13 +21,13 @@ public class LoginPanel extends ImageBackgroundPanel {
 
     private static final long serialVersionUID = 1L;
 
-    public LoginPanel(Panel parentComponent) {
-        super(parentComponent, getImagePath(parentComponent), getBounds(parentComponent));
+    public LoginPanel(Panel parentComponent, MainPanel mainPanel) {
+        super(ChildName.LoginPage.LoginPanel.LOGIN_PANEL.name(), getImagePath(parentComponent), getBounds(parentComponent), parentComponent, mainPanel);
         init();
     }
 
     private void init() {
-        MainPanel mainPanel = (MainPanel) parentComponent.getParentComponent().getParentComponent();
+        MainPanel mainPanel = (MainPanel) parentPanel.getParentPanel().getParentPanel();
         Properties generalProperties = mainPanel.getGeneralProperties();
         Properties uiStylesProperties = mainPanel.getUiStylesProperties();
         Properties uiPositionProperties = mainPanel.getUiPositionProperties();
@@ -54,15 +54,15 @@ public class LoginPanel extends ImageBackgroundPanel {
         String text = generalProperties.getProperty(Constants.General.LOGIN_PANEL_BUTTON_TEXT);
 
         Integer x = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_LOGIN_PANEL_BUTTON_X);
-        Integer y = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_LOGIN_PANEL_EMAIL_Y)
-                + 3 * PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_LOGIN_PANEL_TEXTBOX_HEIGHT)
-                + 3 * PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_LOGIN_PANEL_MARGIN);
+        Integer y = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_LOGIN_PANEL_EMAIL_Y) + 3
+                * PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_LOGIN_PANEL_TEXTBOX_HEIGHT) + 3
+                * PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_LOGIN_PANEL_MARGIN);
         Integer width = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_LOGIN_PANEL_BUTTON_WIDTH);
         Integer height = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_LOGIN_PANEL_BUTTON_HEIGHT);
 
         Rectangle bounds = new Rectangle(x, y, width, height);
 
-        return new Button(this, text, font, fontColor, borderColor, borderSize, borderFocusColor, bgColor, bounds);
+        return new Button(ChildName.LoginPage.LoginPanel.BUTTON.name(), text, font, fontColor, borderColor, borderSize, borderFocusColor, bgColor, bounds, this, mainPanel);
     }
 
     private Label getLabel(Properties uiPositionProperties, Properties uiStylesProperties, Properties generalProperties) {
@@ -72,9 +72,9 @@ public class LoginPanel extends ImageBackgroundPanel {
         String text = generalProperties.getProperty(Constants.General.LOGIN_PANEL_LABEL_TEXT);
 
         Integer x = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_LOGIN_PANEL_LABEL_X);
-        Integer y = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_LOGIN_PANEL_EMAIL_Y)
-                + 2 * PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_LOGIN_PANEL_TEXTBOX_HEIGHT)
-                + 2 * PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_LOGIN_PANEL_MARGIN);
+        Integer y = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_LOGIN_PANEL_EMAIL_Y) + 2
+                * PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_LOGIN_PANEL_TEXTBOX_HEIGHT) + 2
+                * PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_LOGIN_PANEL_MARGIN);
 
         Label label = new Label(this, text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, hoverColor);
         label.setLocation(x, y);
@@ -121,14 +121,14 @@ public class LoginPanel extends ImageBackgroundPanel {
     }
 
     private static Rectangle getBounds(Panel parentComponent) {
-        MainPanel mainPanel = (MainPanel) parentComponent.getParentComponent().getParentComponent();
+        MainPanel mainPanel = (MainPanel) parentComponent.getParentPanel().getParentPanel();
         Properties uiPositionProperties = mainPanel.getUiPositionProperties();
         return new Rectangle(0, 0, PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_LOGIN_PANEL_WIDTH), PropertyUtil.getInteger(
                 uiPositionProperties, UIConstants.Positions.LOGIN_LOGIN_PANEL_HEIGHT));
     }
 
     private static String getImagePath(Panel parentComponent) {
-        MainPanel mainPanel = (MainPanel) ((Panel) parentComponent.getParentComponent()).getParentComponent();
+        MainPanel mainPanel = (MainPanel) ((Panel) parentComponent.getParentPanel()).getParentPanel();
         Properties generalProperties = mainPanel.getGeneralProperties();
         return generalProperties.getProperty(Constants.General.LOGIN_PANEL_IMAGE_PATH);
     }

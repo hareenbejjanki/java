@@ -5,12 +5,14 @@ import java.awt.Rectangle;
 
 import javax.swing.JLayeredPane;
 
+import com.bhirava.ovilearning.ui.component.MainPanel;
+
 public class LayeredPanel extends Panel {
     private static final long serialVersionUID = 1L;
     protected JLayeredPane layeredPane;
 
-    public LayeredPanel(Panel parentComponent, Rectangle bounds) {
-        super(parentComponent, bounds);
+    public LayeredPanel(String name, Rectangle bounds, Panel parentComponent, MainPanel mainPanel) {
+        super(name, bounds, parentComponent, mainPanel);
         layeredPane = new JLayeredPane();
         layeredPane.setBounds(0, 0, bounds.width, bounds.height);
         add(layeredPane);

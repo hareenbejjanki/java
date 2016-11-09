@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 
 import javax.swing.JScrollPane;
 
+import com.bhirava.ovilearning.ui.component.MainPanel;
 import com.bhirava.ovilearning.ui.event.MoveVerticallyWithScroll;
 
 public class VerticallyMovingPanel extends Panel {
@@ -27,12 +28,12 @@ public class VerticallyMovingPanel extends Panel {
         return scrollColor;
     }
 
-    public VerticallyMovingPanel(Panel parentComponent, Rectangle bounds, JScrollPane scrollPane, Point initialLocation, Color initialColor) {
-        this(parentComponent, bounds, scrollPane, initialLocation, initialColor, null);
+    public VerticallyMovingPanel(String name, Rectangle bounds, JScrollPane scrollPane, Point initialLocation, Color initialColor, Panel parentComponent, MainPanel mainPanel) {
+        this(name, bounds, scrollPane, initialLocation, initialColor, null, parentComponent, mainPanel);
     }
 
-    public VerticallyMovingPanel(Panel parentComponent, Rectangle bounds, JScrollPane scrollPane, Point initialLocation, Color initialColor, Color scrollColor) {
-        super(parentComponent, bounds);
+    public VerticallyMovingPanel(String name, Rectangle bounds, JScrollPane scrollPane, Point initialLocation, Color initialColor, Color scrollColor, Panel parentComponent, MainPanel mainPanel) {
+        super(name, bounds, parentComponent, mainPanel);
         this.initialLocation = initialLocation;
         this.initialColor = initialColor;
         this.scrollColor = scrollColor;

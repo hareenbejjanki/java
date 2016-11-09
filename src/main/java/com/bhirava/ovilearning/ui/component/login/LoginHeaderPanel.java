@@ -15,19 +15,19 @@ import com.bhirava.ovilearning.ui.util.PropertyUtil;
 public class LoginHeaderPanel extends ImageBackgroundPanel {
     private static final long serialVersionUID = 1L;
 
-    public LoginHeaderPanel(Panel parentComponent) {
-        super(parentComponent, getImagePath(parentComponent), getBounds(parentComponent));
+    public LoginHeaderPanel(Panel parentComponent, MainPanel mainPanel) {
+        super(ChildName.LoginPage.Child.HEADER_PANEL.name(), getImagePath(parentComponent), getBounds(parentComponent), parentComponent, mainPanel);
         init();
     }
 
     private static String getImagePath(Panel parentComponent) {
-        MainPanel mainFrame = (MainPanel) parentComponent.getParentComponent();
+        MainPanel mainFrame = (MainPanel) parentComponent.getParentPanel();
         Properties generalProperties = mainFrame.getGeneralProperties();
         return generalProperties.getProperty(Constants.General.LOGIN_HEADER_IMAGE_PATH);
     }
 
     private void init() {
-        MainPanel mainFrame = (MainPanel) parentComponent.getParentComponent();
+        MainPanel mainFrame = (MainPanel) parentPanel.getParentPanel();
         Properties uiOtherProperties = mainFrame.getUiOtherProperties();
         Properties uiStylesProperties = mainFrame.getUiStylesProperties();
         Properties uiPositionProperties = mainFrame.getUiPositionProperties();
@@ -46,7 +46,7 @@ public class LoginHeaderPanel extends ImageBackgroundPanel {
     }
 
     private static Rectangle getBounds(Panel parentComponent) {
-        MainPanel mainFrame = (MainPanel) parentComponent.getParentComponent();
+        MainPanel mainFrame = (MainPanel) parentComponent.getParentPanel();
         Properties positionProperties = mainFrame.getUiPositionProperties();
 
         return new Rectangle(0, 0, PropertyUtil.getInteger(positionProperties, UIConstants.Positions.MAIN_PANEL_WIDTH), PropertyUtil.getInteger(

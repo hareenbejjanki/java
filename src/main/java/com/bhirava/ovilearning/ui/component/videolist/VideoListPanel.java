@@ -17,25 +17,26 @@ import com.bhirava.ovilearning.ui.util.PropertyUtil;
 public class VideoListPanel extends Panel {
     private static final long serialVersionUID = 1L;
 
-    public VideoListPanel(Panel parentComponent) {
-        super(parentComponent, getBounds(parentComponent));
+    public VideoListPanel(Panel parentComponent, MainPanel mainPanel) {
+        super(ChildName.VideoListPage.Child.MAIN_PANEL.name(), getBounds(parentComponent), parentComponent, mainPanel);
         init();
     }
 
     private void init() {
         initLeft();
-        VideoListTopicsPanel topicsPanel = new VideoListTopicsPanel(this);
+        VideoListTopicsPanel topicsPanel = new VideoListTopicsPanel(this, mainPanel);
         addChild(ChildName.VideoListPage.MainPanel.TOPICS_PANEL.name(), topicsPanel);
     }
 
     private void initLeft() {
-        MainPanel mainPanel = (MainPanel) parentComponent.getParentComponent();
         Properties uiPositionProperties = mainPanel.getUiPositionProperties();
         Properties uiStylesProperties = mainPanel.getUiStylesProperties();
         Properties generalProperties = mainPanel.getGeneralProperties();
+
         Label progressLabel = getProgressLabel(uiPositionProperties, uiStylesProperties, generalProperties);
         Label progressValueLabel = getProgressValueLabel(uiPositionProperties, uiStylesProperties, generalProperties);
-        Panel progressBar = new Panel(this, getProgressBarBounds(progressLabel, uiPositionProperties));
+        Panel progressBar = new Panel(ChildName.VideoListPage.MainPanel.PROGRESS_BAR.name(), getProgressBarBounds(progressLabel, uiPositionProperties), this,
+                mainPanel);
         progressBar.setBackground(PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.VIDEOLIST_MAIN_PANEL_PROGRESS_BAR_BG_COLOR));
         Label quizzValueLabel = getQuizzValueLabel(progressLabel, progressBar, uiPositionProperties, uiStylesProperties, generalProperties);
         Label quizzLabel = getQuizzLabel(quizzValueLabel, progressLabel, progressBar, uiPositionProperties, uiStylesProperties, generalProperties);
@@ -43,8 +44,9 @@ public class VideoListPanel extends Panel {
                 generalProperties);
         Label assignmentLabel = getAssignmentLabel(quizzValueLabel, quizzLabel, assignmentValueLabel, progressLabel, progressBar, uiPositionProperties,
                 uiStylesProperties, generalProperties);
-        ImagePanel imagePanel = new ImagePanel(this, generalProperties.getProperty(Constants.General.VIDEOLIST_IMAGE_PATH), getImageBounds(progressLabel,
-                progressBar, quizzLabel, uiPositionProperties));
+        ImagePanel imagePanel = new ImagePanel(ChildName.VideoListPage.MainPanel.IMAGE.name(),
+                generalProperties.getProperty(Constants.General.VIDEOLIST_IMAGE_PATH), getImageBounds(progressLabel, progressBar, quizzLabel,
+                        uiPositionProperties), this, mainPanel);
 
         addChild(ChildName.VideoListPage.MainPanel.PROGRESS_LABEL.name(), progressLabel);
         addChild(ChildName.VideoListPage.MainPanel.PROGRESS_VALUE_LABEL.name(), progressValueLabel);
@@ -172,7 +174,7 @@ public class VideoListPanel extends Panel {
     }
 
     private static Rectangle getBounds(Panel parentComponent) {
-        MainPanel mainPanel = (MainPanel) parentComponent.getParentComponent();
+        MainPanel mainPanel = (MainPanel) parentComponent.getParentPanel();
         Properties uiPositionProperties = mainPanel.getUiPositionProperties();
         int x = 0;
         int y = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_HEADER_HEIGHT)

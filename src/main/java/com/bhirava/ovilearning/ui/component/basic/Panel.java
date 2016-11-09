@@ -7,17 +7,28 @@ import java.util.HashMap;
 
 import javax.swing.JPanel;
 
+import com.bhirava.ovilearning.ui.component.MainPanel;
 import com.bhirava.ovilearning.ui.event.OnClickFocus;
 
 public class Panel extends JPanel {
 	private static final long serialVersionUID = 1L;
 
-	protected Panel parentComponent;
+	private String panelName;
+	protected Panel parentPanel;	
+	protected MainPanel mainPanel;
 	protected HashMap<String, Component> childComponents;
 
-	public Panel getParentComponent() {
-		return parentComponent;
+	public String getPanelName() {
+        return panelName;
+    }
+
+	public Panel getParentPanel() {
+		return parentPanel;
 	}
+
+	public MainPanel getMainPanel() {
+        return mainPanel;
+    }
 
 	public HashMap<String, Component> getChildComponents() {
 		return childComponents;
@@ -38,26 +49,29 @@ public class Panel extends JPanel {
 		}
 	}
 
-	public Panel(Panel parentComponent, Rectangle bounds) {
-	    this.parentComponent = parentComponent;
-	    setLayout(null);
+	public Panel(String panelName, Rectangle bounds, Panel parentPanel, MainPanel mainPanel) {
+        this.panelName = panelName;
+        this.mainPanel = mainPanel;
+        this.parentPanel = parentPanel;
         this.childComponents = new HashMap<String, Component>();
+
+        setLayout(null);
         if (bounds != null) {
             setBounds(bounds);
         }
         addMouseListener(new OnClickFocus(this));
-	}
+    }
 
     public void makeVerticallyCenterPositioned(int x) {
         Dimension size = getPreferredSize();
-        int y = (int) parentComponent.getHeight() / 2 - size.height / 2;
+        int y = (int) parentPanel.getHeight() / 2 - size.height / 2;
         setBounds(x, y, size.width, size.height);
     }
 
 	public void makeCenterPositioned() {
 	    Dimension size = getSize();
-        int x = (int) parentComponent.getWidth() / 2 - size.width / 2;
-        int y = (int) parentComponent.getHeight() / 2 - size.height / 2;
+        int x = (int) parentPanel.getWidth() / 2 - size.width / 2;
+        int y = (int) parentPanel.getHeight() / 2 - size.height / 2;
         setBounds(x, y, size.width, size.height);
 	}
 
@@ -71,8 +85,9 @@ public class Panel extends JPanel {
             }
         }
 
-	    if (parentComponent != null) {
-	        parentComponent.remove(this);
+	    if (parentPanel != null) {
+	        parentPanel.childComponents.remove(panelName);
+	        parentPanel.remove(this);
 	    }
 	}
 }

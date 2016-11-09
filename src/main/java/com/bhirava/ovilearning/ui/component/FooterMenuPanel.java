@@ -19,20 +19,21 @@ public class FooterMenuPanel extends Panel {
 
     private static final long serialVersionUID = 1L;
 
-    public FooterMenuPanel(Panel parentComponent) {
-        super(parentComponent, getBounds(parentComponent));
+    public FooterMenuPanel(Panel parentComponent, MainPanel mainPanel) {
+        super(ChildName.MainPage.FooterPanel.MENU_PANEL.name(), getBounds(parentComponent), parentComponent, mainPanel);
         init();
     }
 
     private void init() {
-        MainPanel mainPanel = (MainPanel) parentComponent.getParentComponent();
+        MainPanel mainPanel = (MainPanel) parentPanel.getParentPanel();
         Properties uiPositionProperties = mainPanel.getUiPositionProperties();
         Properties uiStylesProperties = mainPanel.getUiStylesProperties();
         Properties generalProperties = mainPanel.getGeneralProperties();
 
         setBackground(PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.FOOTER_BG_COLOR));
 
-        ImagePanel logo = new ImagePanel(this, generalProperties.getProperty(Constants.General.LOGO_PATH), getLogoBounds(uiPositionProperties));
+        ImagePanel logo = new ImagePanel(ChildName.MainPage.FooterPanel.LOGO.name(), generalProperties.getProperty(Constants.General.LOGO_PATH),
+                getLogoBounds(uiPositionProperties), this, mainPanel);
         VerticalTextMenuPanel menu1 = getMenu1(uiPositionProperties, uiStylesProperties, generalProperties);
         VerticalTextMenuPanel menu2 = getMenu2(uiPositionProperties, uiStylesProperties, generalProperties);
         VerticalTextMenuPanel menu3 = getMenu3(uiPositionProperties, uiStylesProperties, generalProperties);
@@ -69,8 +70,8 @@ public class FooterMenuPanel extends Panel {
 
         Rectangle bounds = new Rectangle(x, y, width, 10);
 
-        return new VerticalTextMenuPanel(this, UIConstants.Styles.TRANSPARENT_COLOR, heading, headingFont, headingColor, menu, menuFont, menuColor,
-                menuHoverColor, margin, bounds);
+        return new VerticalTextMenuPanel(ChildName.MainPage.FooterPanel.MENU2.name(), UIConstants.Styles.TRANSPARENT_COLOR, heading, headingFont,
+                headingColor, menu, menuFont, menuColor, menuHoverColor, margin, bounds, this, mainPanel);
     }
 
     private VerticalTextMenuPanel getMenu2(Properties uiPositionProperties, Properties uiStylesProperties, Properties generalProperties) {
@@ -94,8 +95,8 @@ public class FooterMenuPanel extends Panel {
 
         Rectangle bounds = new Rectangle(x, y, width, 10);
 
-        return new VerticalTextMenuPanel(this, UIConstants.Styles.TRANSPARENT_COLOR, heading, headingFont, headingColor, menu, menuFont, menuColor,
-                menuHoverColor, margin, bounds);
+        return new VerticalTextMenuPanel(ChildName.MainPage.FooterPanel.MENU2.name(), UIConstants.Styles.TRANSPARENT_COLOR, heading, headingFont,
+                headingColor, menu, menuFont, menuColor, menuHoverColor, margin, bounds, this, mainPanel);
     }
 
     private VerticalTextMenuPanel getMenu1(Properties uiPositionProperties, Properties uiStylesProperties, Properties generalProperties) {
@@ -119,8 +120,8 @@ public class FooterMenuPanel extends Panel {
 
         Rectangle bounds = new Rectangle(x, y, width, 10);
 
-        return new VerticalTextMenuPanel(this, UIConstants.Styles.TRANSPARENT_COLOR, heading, headingFont, headingColor, menu, menuFont, menuColor,
-                menuHoverColor, margin, bounds);
+        return new VerticalTextMenuPanel(ChildName.MainPage.FooterPanel.MENU1.name(), UIConstants.Styles.TRANSPARENT_COLOR, heading, headingFont,
+                headingColor, menu, menuFont, menuColor, menuHoverColor, margin, bounds, this, mainPanel);
     }
 
     private Rectangle getLogoBounds(Properties uiPositionProperties) {
@@ -160,7 +161,8 @@ public class FooterMenuPanel extends Panel {
         return label;
     }
 
-    private Label getEmailTextLabel(Label infoLineLabel, Label emailLabel, Properties uiPositionProperties, Properties uiStylesProperties, Properties generalProperties) {
+    private Label getEmailTextLabel(Label infoLineLabel, Label emailLabel, Properties uiPositionProperties, Properties uiStylesProperties,
+            Properties generalProperties) {
         Font font = PropertyUtil.getFont(uiStylesProperties, UIConstants.Styles.FOOTER_LABEL_FONT);
         Color fontColor = PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.FOOTER_LABEL_FONT_COLOR);
         Color fontHoverColor = PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.FOOTER_LABEL_HOVER_FONT_COLOR);
@@ -192,7 +194,7 @@ public class FooterMenuPanel extends Panel {
     }
 
     private static Rectangle getBounds(Panel parentComponent) {
-        MainPanel mainPanel = (MainPanel) parentComponent.getParentComponent();
+        MainPanel mainPanel = (MainPanel) parentComponent.getParentPanel();
         Properties uiPositionProperties = mainPanel.getUiPositionProperties();
         int width = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FRAME_WIDTH);
         int height = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FOOTER_MENU_HEIGHT);

@@ -14,6 +14,7 @@ public class MainFrame extends JFrame {
     private static final long serialVersionUID = 1L;
 
     private JScrollPane scrollPane;
+    
 
     public MainFrame(Properties uiPositionProperties, Properties uiStylesProperties, Properties otherProperties, Properties generalProperties) {
         init(uiPositionProperties, uiStylesProperties, otherProperties, generalProperties);

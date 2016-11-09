@@ -7,12 +7,13 @@ import java.util.List;
 
 import com.bhirava.ovilearning.constants.ChildName;
 import com.bhirava.ovilearning.constants.UIConstants;
+import com.bhirava.ovilearning.ui.component.MainPanel;
 
 public class VerticalTextMenuPanel extends Panel {
     private static final long serialVersionUID = 1L;
 
-    public VerticalTextMenuPanel(Panel parentComponent, Color background, String heading, Font headingFont, Color headingColor, List<String> menu, Font menuFont, Color menuColor, Color menuHoverColor, int margin, Rectangle bounds) {
-        super(parentComponent, bounds);
+    public VerticalTextMenuPanel(String name, Color background, String heading, Font headingFont, Color headingColor, List<String> menu, Font menuFont, Color menuColor, Color menuHoverColor, int margin, Rectangle bounds, Panel parentComponent, MainPanel mainPanel) {
+        super(name, bounds, parentComponent, mainPanel);
         init(background, heading, headingFont, headingColor, menu, menuFont, menuColor, menuHoverColor, margin);
     }
 
@@ -20,7 +21,7 @@ public class VerticalTextMenuPanel extends Panel {
         Label headingLabel = new Label(this, heading, headingFont, headingColor, UIConstants.Styles.TRANSPARENT_COLOR);
         headingLabel.setLocation(0, 0);
         int y = headingLabel.getSize().height + margin;
-        Panel line = new Panel(this, new Rectangle(0, y, getBounds().width, 1));
+        Panel line = new Panel(ChildName.General.SPLIT.name(), new Rectangle(0, y, getBounds().width, 1), this, mainPanel);
         y += margin;
 
         addChild(ChildName.General.HEADING.name(), headingLabel);

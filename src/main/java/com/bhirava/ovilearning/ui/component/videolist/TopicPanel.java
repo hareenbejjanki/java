@@ -19,13 +19,12 @@ import com.bhirava.ovilearning.ui.util.PropertyUtil;
 public class TopicPanel extends Panel {
     private static final long serialVersionUID = 1L;
 
-    public TopicPanel(Panel parentComponent, int count) {
-        super(parentComponent, getBounds(parentComponent, count));
+    public TopicPanel(int count, Panel parentComponent, MainPanel mainPanel) {
+        super(ChildName.VideoListPage.MainPanel.TOPICS_PANEL.name() + count, getBounds(parentComponent, count), parentComponent, mainPanel);
         init(count);
     }
 
     private void init(int count) {
-        MainPanel mainPanel = (MainPanel) parentComponent.getParentComponent().getParentComponent().getParentComponent();
         Properties uiPositionProperties = mainPanel.getUiPositionProperties();
         Properties uiStylesProperties = mainPanel.getUiStylesProperties();
         Properties generalProperties = mainPanel.getGeneralProperties();
@@ -33,9 +32,10 @@ public class TopicPanel extends Panel {
         setBackground(PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.VIDEOLIST_MAIN_PANEL_BG_COLOR));
 
         Panel countPanel = getCountPanel(count, uiPositionProperties, uiStylesProperties);
-        ImagePanel icon = new ImagePanel(this, generalProperties.getProperty(Constants.General.VIDEOLIST_TOPIC_ICON_PATH), new Rectangle(0, 0,
-                PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_MAIN_PANEL_TOPIC_ICON_WIDTH), PropertyUtil.getInteger(
-                        uiPositionProperties, UIConstants.Positions.VIDEOLIST_MAIN_PANEL_TOPIC_ICON_HEIGHT)));
+        ImagePanel icon = new ImagePanel(ChildName.VideoListPage.TopicPanel.LOGO.name(),
+                generalProperties.getProperty(Constants.General.VIDEOLIST_TOPIC_ICON_PATH), new Rectangle(0, 0, PropertyUtil.getInteger(uiPositionProperties,
+                        UIConstants.Positions.VIDEOLIST_MAIN_PANEL_TOPIC_ICON_WIDTH), PropertyUtil.getInteger(uiPositionProperties,
+                        UIConstants.Positions.VIDEOLIST_MAIN_PANEL_TOPIC_ICON_HEIGHT)), this, mainPanel);
         icon.makeVerticallyCenterPositioned(PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_MAIN_PANEL_TOPIC_ICON_X));
         Label titleLabel = getTitleLabel(count, icon, uiPositionProperties, uiStylesProperties, generalProperties);
         Label durationLabel = getDurationLabel(count, icon, uiPositionProperties, uiStylesProperties, generalProperties);
@@ -61,8 +61,8 @@ public class TopicPanel extends Panel {
         int width = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_MAIN_PANEL_TOPIC_BUTTON_WIDTH);
         int height = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_MAIN_PANEL_TOPIC_BUTTON_HEIGHT);
 
-        Button button = new Button(this, text, font, fontColor, backgroundColor, 0, null, backgroundColor, backgroundHoverColor, new Rectangle(x, 0, width,
-                height));
+        Button button = new Button(ChildName.VideoListPage.TopicPanel.BUTTON.name(), text, font, fontColor, backgroundColor, 0, null, backgroundColor,
+                backgroundHoverColor, new Rectangle(x, 0, width, height), this, mainPanel);
         button.makeVerticallyCenterPositioned(x);
 
         return button;
@@ -71,7 +71,7 @@ public class TopicPanel extends Panel {
     private Panel getCountPanel(int count, Properties uiPositionProperties, Properties uiStylesProperties) {
         int width = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_MAIN_PANEL_TOPIC_COUNT_WIDTH);
         int height = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_MAIN_PANEL_TOPIC_HEIGHT);
-        Panel panel = new Panel(this, new Rectangle(0, 0, width, height));
+        Panel panel = new Panel(ChildName.VideoListPage.TopicPanel.NUMBER_PANEL.name(), new Rectangle(0, 0, width, height), this, mainPanel);
         panel.setBackground(PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.VIDEOLIST_MAIN_PANEL_TOPICS_COUNT_BG_COLOR));
 
         Label countLabel = getCountLabel(count, panel, uiPositionProperties, uiStylesProperties);
@@ -121,7 +121,7 @@ public class TopicPanel extends Panel {
     }
 
     private static Rectangle getBounds(Panel parentComponent, int count) {
-        MainPanel mainPanel = (MainPanel) parentComponent.getParentComponent().getParentComponent().getParentComponent();
+        MainPanel mainPanel = (MainPanel) parentComponent.getParentPanel().getParentPanel().getParentPanel();
         Properties uiPositionProperties = mainPanel.getUiPositionProperties();
 
         int x = 0;

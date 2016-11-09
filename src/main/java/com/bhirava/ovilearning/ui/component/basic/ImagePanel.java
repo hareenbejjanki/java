@@ -9,6 +9,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import com.bhirava.ovilearning.constants.UIConstants;
+import com.bhirava.ovilearning.ui.component.MainPanel;
 
 public class ImagePanel extends Panel {
     private static final long serialVersionUID = 1L;
@@ -20,8 +21,8 @@ public class ImagePanel extends Panel {
         return image;
     }
 
-    public ImagePanel(Panel parentComponent, String imagePath, Rectangle bounds) {
-        super(parentComponent, bounds);
+    public ImagePanel(String name, String imagePath, Rectangle bounds, Panel parentComponent, MainPanel mainPanel) {
+        super(name, bounds, parentComponent, mainPanel);
         this.bounds = bounds;
         try {
             this.image = ImageIO.read(new File(System.getenv("OVILEARNING_HOME"), imagePath));

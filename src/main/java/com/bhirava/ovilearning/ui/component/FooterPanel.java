@@ -12,8 +12,8 @@ public class FooterPanel extends Panel {
 
 	private static final long serialVersionUID = 1L;
 
-	public FooterPanel(Panel parentComponent) {
-		super(parentComponent, getBounds(parentComponent));
+	public FooterPanel(MainPanel mainPanel) {
+		super(ChildName.General.FOOTER.name(), getBounds(mainPanel), mainPanel, mainPanel);
 		init();
 	}
 
@@ -30,14 +30,14 @@ public class FooterPanel extends Panel {
 	}
 
 	private void addPanels() {
-	    CopyRightsPanel copyRightsPanel = new CopyRightsPanel(this);
-		FooterMenuPanel menuPanel = new FooterMenuPanel(this);
+	    CopyRightsPanel copyRightsPanel = new CopyRightsPanel(this, mainPanel);
+		FooterMenuPanel menuPanel = new FooterMenuPanel(this, mainPanel);
 		addChild(ChildName.MainPage.FooterPanel.COPY_RIGHTS_PANEL.name(), copyRightsPanel);
 		addChild(ChildName.MainPage.FooterPanel.MENU_PANEL.name(), menuPanel);
 	}
 
 	private void initStyles() {
-		MainPanel mainFrame = (MainPanel) parentComponent;
+		MainPanel mainFrame = (MainPanel) parentPanel;
 		Properties stylesProperties = mainFrame.getUiStylesProperties();
 		Properties positionProperties = mainFrame.getUiPositionProperties();
 

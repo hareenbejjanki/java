@@ -8,24 +8,22 @@ import java.util.Properties;
 
 import com.bhirava.ovilearning.constants.ChildName;
 import com.bhirava.ovilearning.constants.Constants;
+import com.bhirava.ovilearning.constants.PageName;
 import com.bhirava.ovilearning.constants.UIConstants;
 import com.bhirava.ovilearning.ui.component.MainPanel;
-import com.bhirava.ovilearning.ui.component.basic.ImageBackgroundPanel;
 import com.bhirava.ovilearning.ui.component.basic.Label;
 import com.bhirava.ovilearning.ui.component.basic.Panel;
-import com.bhirava.ovilearning.ui.component.login.LoginPanel;
 import com.bhirava.ovilearning.ui.util.PropertyUtil;
 
 public class VideoListPage extends Panel {
     private static final long serialVersionUID = 1L;
 
-    public VideoListPage(Panel parentComponent) {
-        super(parentComponent, getBounds(parentComponent));
+    public VideoListPage(MainPanel mainPanel) {
+        super(PageName.VIDEO_LIST_PAGE.name(), getBounds(mainPanel), mainPanel, mainPanel);
         init();
     }
 
-    private static Rectangle getBounds(Panel parentComponent) {
-        MainPanel mainPanel = (MainPanel) parentComponent;
+    private static Rectangle getBounds(MainPanel mainPanel) {
         Properties positionProperties = mainPanel.getUiPositionProperties();
 
         return new Rectangle(0, 0, PropertyUtil.getInteger(positionProperties, UIConstants.Positions.MAIN_PANEL_WIDTH), getHeight(positionProperties));
@@ -45,11 +43,11 @@ public class VideoListPage extends Panel {
     private void addPanels() {
         addChild(ChildName.VideoListPage.Child.HEADER_PANEL.name(), getHeaderPanel());
         addChild(ChildName.VideoListPage.Child.NAVIGATION_PANEL.name(), getNavigationPanel());
-        addChild(ChildName.VideoListPage.Child.MAIN_PANEL.name(), getMainPanel());
+        addChild(ChildName.VideoListPage.Child.MAIN_PANEL.name(), getVideoMainPanel());
     }
 
     private Component getNavigationPanel() {
-        MainPanel mainPanel = (MainPanel) parentComponent;
+        MainPanel mainPanel = (MainPanel) parentPanel;
         Properties uiPositionProperties = mainPanel.getUiPositionProperties();
         Properties uiStylesProperties = mainPanel.getUiStylesProperties();
         Properties generalProperties = mainPanel.getGeneralProperties();
@@ -59,7 +57,7 @@ public class VideoListPage extends Panel {
         int height = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_NAVIGATION_HEIGHT);
         
         Rectangle bounds = new Rectangle(0, y, width, height);
-        Panel panel = new Panel(this, bounds);
+        Panel panel = new Panel(ChildName.VideoListPage.Child.NAVIGATION_PANEL.name(), bounds, this, mainPanel);
         panel.setBackground(PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.VIDEOLIST_NAVIGATION_BG_COLOR));
 
         Label navigationLabel = getNavigationLabel(panel, uiPositionProperties, uiStylesProperties, generalProperties);
@@ -81,12 +79,12 @@ public class VideoListPage extends Panel {
         return label;
     }
 
-    private Component getMainPanel() {
-        return new VideoListPanel(this);
+    private Component getVideoMainPanel() {
+        return new VideoListPanel(this, mainPanel);
     }
 
     private Component getHeaderPanel() {
-        return new VideoListHeaderPanel(this);
+        return new VideoListHeaderPanel(this, mainPanel);
     }
 
     private void initStyles() {

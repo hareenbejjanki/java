@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.border.Border;
 
 import com.bhirava.ovilearning.constants.ChildName;
+import com.bhirava.ovilearning.ui.component.MainPanel;
 import com.bhirava.ovilearning.ui.event.OnFocusBorderChanger;
 import com.bhirava.ovilearning.ui.event.OnHoverBackgroundChanger;
 
@@ -29,15 +30,15 @@ public class Button extends Panel {
         button.addActionListener(actionListener);
     }
 
-    public Button(Panel parentComponent, String text, Font font, Color fontColor, Color borderColor, int borderWidth, Color borderFocusColor,
-            Color backgroundColor, Rectangle bounds) {
-        this(parentComponent, text, font, fontColor, borderColor, borderWidth, borderFocusColor, backgroundColor, null, bounds);
+    public Button(String name, String text, Font font, Color fontColor, Color borderColor, int borderWidth, Color borderFocusColor,
+            Color backgroundColor, Rectangle bounds, Panel parentComponent, MainPanel mainPanel) {
+        this(name, text, font, fontColor, borderColor, borderWidth, borderFocusColor, backgroundColor, null, bounds, parentComponent, mainPanel);
     }
 
-    public Button(Panel parentComponent, String text, Font font, Color fontColor, Color borderColor, int borderWidth, Color borderFocusColor,
-            Color backgroundColor, Color backgroundHoverColor, Rectangle bounds) {
-        super(parentComponent, bounds);
-        this.parentComponent = parentComponent;
+    public Button(String name, String text, Font font, Color fontColor, Color borderColor, int borderWidth, Color borderFocusColor,
+            Color backgroundColor, Color backgroundHoverColor, Rectangle bounds, Panel parentComponent, MainPanel mainPanel) {
+        super(name, bounds, parentComponent, mainPanel);
+        this.parentPanel = parentComponent;
         this.fontColor = fontColor;
         this.borderColor = borderColor;
         this.borderWidth = borderWidth;

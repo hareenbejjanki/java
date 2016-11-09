@@ -2,11 +2,13 @@ package com.bhirava.ovilearning.ui.component.basic;
 
 import java.awt.Rectangle;
 
+import com.bhirava.ovilearning.ui.component.MainPanel;
+
 public class LoopVideoPanel extends Panel {
     private static final long serialVersionUID = 1L;
 
-    public LoopVideoPanel(Panel parentComponent, String vedioPath, Rectangle bounds) {
-        super(parentComponent, bounds);
+    public LoopVideoPanel(String name, String vedioPath, Rectangle bounds, Panel parentComponent, MainPanel mainPanel) {
+        super(name, bounds, parentComponent, mainPanel);
         init(vedioPath, bounds);
     }
 

@@ -3,6 +3,7 @@ package com.bhirava.ovilearning.ui.component.basic;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
+import com.bhirava.ovilearning.ui.component.MainPanel;
 import com.bhirava.ovilearning.ui.util.Animation;
 
 public class AnimationPanel extends Panel {
@@ -18,7 +19,7 @@ public class AnimationPanel extends Panel {
 		this.animations = animations;
 	}
 
-	public AnimationPanel(Panel parentComponent, Rectangle bounds) {
-		super(parentComponent, bounds);
+	public AnimationPanel(String name, Rectangle bounds, Panel parentComponent, MainPanel mainPanel) {
+		super(name, bounds, parentComponent, mainPanel);
 	}
 }

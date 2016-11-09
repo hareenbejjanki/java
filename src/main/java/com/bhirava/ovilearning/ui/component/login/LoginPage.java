@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 import java.util.Properties;
 
 import com.bhirava.ovilearning.constants.ChildName;
+import com.bhirava.ovilearning.constants.PageName;
 import com.bhirava.ovilearning.constants.UIConstants;
 import com.bhirava.ovilearning.ui.component.MainPanel;
 import com.bhirava.ovilearning.ui.component.basic.ImageBackgroundPanel;
@@ -14,8 +15,8 @@ import com.bhirava.ovilearning.ui.util.PropertyUtil;
 public class LoginPage extends Panel {
     private static final long serialVersionUID = 1L;
 
-    public LoginPage(Panel parentComponent) {
-        super(parentComponent, getBounds(parentComponent));
+    public LoginPage(MainPanel mainPanel) {
+        super(PageName.LOGIN_PAGE.name(), getBounds(mainPanel), mainPanel, mainPanel);
         init();
     }
 
@@ -42,15 +43,15 @@ public class LoginPage extends Panel {
     }
 
     private Component getVoidLoginPanel() {
-        Panel panel = new Panel(this, getVoidLoginPanelBounds());
-        ImageBackgroundPanel loginPanel = new LoginPanel(panel);
+        Panel panel = new Panel(ChildName.LoginPage.Child.VOID_LOGIN_PANEL.name(), getVoidLoginPanelBounds(), this, mainPanel);
+        ImageBackgroundPanel loginPanel = new LoginPanel(panel, mainPanel);
         loginPanel.makeCenterPositioned();
         panel.addChild(ChildName.LoginPage.LoginPanel.LOGIN_PANEL.name(), loginPanel);
         return panel;
     }
 
     private Rectangle getVoidLoginPanelBounds() {
-        MainPanel mainFrame = (MainPanel) parentComponent;
+        MainPanel mainFrame = (MainPanel) parentPanel;
         Properties positionProperties = mainFrame.getUiPositionProperties();
 
         Rectangle bounds = new Rectangle(0, PropertyUtil.getInteger(positionProperties, UIConstants.Positions.LOGIN_HEADER_HEIGHT), PropertyUtil.getInteger(
@@ -61,7 +62,7 @@ public class LoginPage extends Panel {
     }
 
     private Component getHeaderPanel() {
-        return new LoginHeaderPanel(this);
+        return new LoginHeaderPanel(this, mainPanel);
     }
 
     private void initStyles() {

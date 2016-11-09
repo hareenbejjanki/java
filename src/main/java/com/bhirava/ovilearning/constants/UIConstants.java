@@ -80,6 +80,9 @@ public class UIConstants {
     }
 
     public static class Styles {
+        public static final String BLACK_THEME_HEADER1_FONT = "black.theme.header1.font";
+        public static final String BLACK_THEME_HEADER2_FONT = "black.theme.header2.font";
+
         public static final String HEADER_BG_COLOR = "header.bg.color";
         public static final String HEADER_BG_INIT_COLOR = "header.bg.init.color";
         public static final String HEADER_COLOR_R = "header.color";

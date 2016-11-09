@@ -10,6 +10,8 @@ public class Constants {
         public static final String HEADER_TOUR_TEXT = "header.tour.text";
         public static final String HEADER_MEDIUM_TEXT = "header.medium.text";
 
+        public static final String BLACK_THEAM_IMAGE_PATH = "black.theam.image.path";
+
         public static final String LANDING_PAGE_VIDEO_PATH = "landing.page.video.path";
         public static final String LOGIN_HEADER_IMAGE_PATH = "login.header.image.path";
         public static final String LOGIN_PANEL_IMAGE_PATH = "login.panel.image.path";

@@ -6,8 +6,6 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.Properties;
 
-import javax.swing.JScrollPane;
-
 import com.bhirava.ovilearning.constants.ChildName;
 import com.bhirava.ovilearning.constants.Constants;
 import com.bhirava.ovilearning.constants.UIConstants;
@@ -21,8 +19,9 @@ import com.bhirava.ovilearning.ui.util.PropertyUtil;
 public class HeaderPanel extends VerticallyMovingPanel {
     private static final long serialVersionUID = 1L;
 
-    public HeaderPanel(Panel parentComponent, JScrollPane scrollPane) {
-        super(parentComponent, getBounds(parentComponent), scrollPane, new Point(0, 0), getInitialColor(parentComponent), getScrollColor(parentComponent));
+    public HeaderPanel(MainPanel mainPanel) {
+        super(ChildName.General.HEADER.name(), getBounds(mainPanel), mainPanel.getScrollPane(), new Point(0, 0), getInitialColor(mainPanel),
+                getScrollColor(mainPanel), mainPanel, mainPanel);
         init();
     }
 
@@ -47,12 +46,12 @@ public class HeaderPanel extends VerticallyMovingPanel {
     }
 
     private void init() {
-        MainPanel mainFrame = (MainPanel) parentComponent;
-        Properties uiPositionProperties = mainFrame.getUiPositionProperties();
-        Properties uiStylesProperties = mainFrame.getUiStylesProperties();
-        Properties generalProperties = mainFrame.getGeneralProperties();
+        Properties uiPositionProperties = mainPanel.getUiPositionProperties();
+        Properties uiStylesProperties = mainPanel.getUiStylesProperties();
+        Properties generalProperties = mainPanel.getGeneralProperties();
 
-        ImagePanel logo = new ImagePanel(this, generalProperties.getProperty(Constants.General.LOGO_PATH), getLogoBounds(uiPositionProperties));
+        ImagePanel logo = new ImagePanel(ChildName.MainPage.HeaderPanel.LOGO.name(), generalProperties.getProperty(Constants.General.LOGO_PATH),
+                getLogoBounds(uiPositionProperties), this, mainPanel);
         ImagePanel searchPanel = getSearchPanel(uiPositionProperties, uiStylesProperties, generalProperties);
         Label registerLabel = getRegisterLabel(uiPositionProperties, uiStylesProperties, generalProperties);
         Label loginLabel = getLoginLabel(registerLabel, uiPositionProperties, uiStylesProperties, generalProperties);
@@ -65,21 +64,20 @@ public class HeaderPanel extends VerticallyMovingPanel {
         addChild(ChildName.MainPage.HeaderPanel.LOGIN.name(), loginLabel);
         addChild(ChildName.MainPage.HeaderPanel.TOUR.name(), tourLabel);
         addChild(ChildName.MainPage.HeaderPanel.MEDIUM.name(), mediumLabel);
-        
+
     }
 
-    private Label getMediumLabel(Label registerLabel, Label loginLabel, Label tourLabel, Properties uiPositionProperties, Properties uiStylesProperties, Properties generalProperties) {
+    private Label getMediumLabel(Label registerLabel, Label loginLabel, Label tourLabel, Properties uiPositionProperties, Properties uiStylesProperties,
+            Properties generalProperties) {
         Font font = PropertyUtil.getFont(uiStylesProperties, UIConstants.Styles.HEADER_LABEL_FONT);
         Color fontColor = PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.HEADER_LABEL_FONT_COLOR);
         Color hoverColor = PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.HEADER_LABEL_FONT_HOVER_COLOR);
         String text = generalProperties.getProperty(Constants.General.HEADER_MEDIUM_TEXT);
 
         Integer x = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.HEADER_LABEL_X)
-                + PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.HEADER_SEARCH_ICON_WIDTH)
-                + 4 * PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.HEADER_LABEL_MARGIN)
-                + registerLabel.getSize().width
-                + loginLabel.getSize().width
-                + tourLabel.getSize().width;
+                + PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.HEADER_SEARCH_ICON_WIDTH) + 4
+                * PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.HEADER_LABEL_MARGIN) + registerLabel.getSize().width
+                + loginLabel.getSize().width + tourLabel.getSize().width;
 
         Label label = new Label(this, text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, hoverColor);
         label.makeVerticallyCenterPositioned(x);
@@ -87,16 +85,16 @@ public class HeaderPanel extends VerticallyMovingPanel {
         return label;
     }
 
-    private Label getTourLabel(Label registerLabel, Label loginLabel, Properties uiPositionProperties, Properties uiStylesProperties, Properties generalProperties) {
+    private Label getTourLabel(Label registerLabel, Label loginLabel, Properties uiPositionProperties, Properties uiStylesProperties,
+            Properties generalProperties) {
         Font font = PropertyUtil.getFont(uiStylesProperties, UIConstants.Styles.HEADER_LABEL_FONT);
         Color fontColor = PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.HEADER_LABEL_FONT_COLOR);
         Color hoverColor = PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.HEADER_LABEL_FONT_HOVER_COLOR);
         String text = generalProperties.getProperty(Constants.General.HEADER_TOUR_TEXT);
 
         Integer x = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.HEADER_LABEL_X)
-                + PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.HEADER_SEARCH_ICON_WIDTH)
-                + 3 * PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.HEADER_LABEL_MARGIN)
-                + registerLabel.getSize().width
+                + PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.HEADER_SEARCH_ICON_WIDTH) + 3
+                * PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.HEADER_LABEL_MARGIN) + registerLabel.getSize().width
                 + loginLabel.getSize().width;
 
         Label label = new Label(this, text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, hoverColor);
@@ -112,9 +110,8 @@ public class HeaderPanel extends VerticallyMovingPanel {
         String text = generalProperties.getProperty(Constants.General.HEADER_LOGIN_TEXT);
 
         Integer x = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.HEADER_LABEL_X)
-                + PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.HEADER_SEARCH_ICON_WIDTH)
-                + 2 * PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.HEADER_LABEL_MARGIN)
-                + registerLabel.getSize().width;
+                + PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.HEADER_SEARCH_ICON_WIDTH) + 2
+                * PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.HEADER_LABEL_MARGIN) + registerLabel.getSize().width;
 
         Label label = new Label(this, text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, hoverColor);
         label.makeVerticallyCenterPositioned(x);
@@ -144,7 +141,8 @@ public class HeaderPanel extends VerticallyMovingPanel {
         Integer height = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.HEADER_SEARCH_ICON_HEIGHT);
 
         Rectangle bounds = new Rectangle(x, 0, width, height);
-        ImagePanel imagePanel = new ImagePanel(this, generalProperties.getProperty(Constants.General.HEADER_SEAR_ICON_WHITE), bounds);
+        ImagePanel imagePanel = new ImagePanel(ChildName.MainPage.HeaderPanel.SEARCH.name(),
+                generalProperties.getProperty(Constants.General.HEADER_SEAR_ICON_WHITE), bounds, this, mainPanel);
         imagePanel.makeVerticallyCenterPositioned(x);
 
         return imagePanel;
@@ -156,7 +154,9 @@ public class HeaderPanel extends VerticallyMovingPanel {
         Integer height = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.HEADER_SEARCH_ICON_HEIGHT);
 
         Rectangle bounds = new Rectangle(x, 0, width, height);
-        OnHoverChangingImagePanel imagePanel = new OnHoverChangingImagePanel(this, generalProperties.getProperty(Constants.General.HEADER_SEAR_ICON_WHITE), generalProperties.getProperty(Constants.General.HEADER_SEAR_ICON_GREY), bounds);
+        OnHoverChangingImagePanel imagePanel = new OnHoverChangingImagePanel(ChildName.MainPage.HeaderPanel.SEARCH.name(),
+                generalProperties.getProperty(Constants.General.HEADER_SEAR_ICON_WHITE),
+                generalProperties.getProperty(Constants.General.HEADER_SEAR_ICON_GREY), bounds, this, mainPanel);
         imagePanel.makeVerticallyCenterPositioned(x);
 
         return imagePanel;

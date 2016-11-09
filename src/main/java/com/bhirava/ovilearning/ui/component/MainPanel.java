@@ -6,7 +6,7 @@ import java.util.Properties;
 
 import javax.swing.JScrollPane;
 
-import com.bhirava.ovilearning.constants.Page;
+import com.bhirava.ovilearning.constants.PageName;
 import com.bhirava.ovilearning.constants.UIConstants;
 import com.bhirava.ovilearning.ui.component.basic.Panel;
 import com.bhirava.ovilearning.ui.component.login.LoginPage;
@@ -48,15 +48,15 @@ public class MainPanel extends Panel {
         return currentPage;
     }
 
-    public void setPage(Page page) {
+    public void setPage(PageName page) {
         setPage(page, null);
     }
 
-    public void setPage(Page page, Object param1) {
+    public void setPage(PageName page, Object param1) {
         setPage(page, param1, null);
     }
 
-    public void setPage(Page page, Object param1, Object param2) {
+    public void setPage(PageName page, Object param1, Object param2) {
         if (currentPage != null) {
             currentPage.distroy();
         }
@@ -69,7 +69,7 @@ public class MainPanel extends Panel {
                 currentPage = new VideoListPage(this);
                 break;
             case VIDEO_PAGE:
-                currentPage = new VideoPage(this, (String) param1, (String) param2);
+                currentPage = new VideoPage((String) param1, (String) param2, this);
                 break;
             default:
                 break;
@@ -85,7 +85,7 @@ public class MainPanel extends Panel {
     }
 
     public MainPanel(MainFrame mainFrame, Properties uiPositionProperties, Properties uiStylesProperties, Properties uiOtherProperties, Properties generalProperties) {
-        super(null, null);
+        super("MainPanel", null, null, null);
         this.mainFrame = mainFrame;
         this.uiPositionProperties = uiPositionProperties;
         this.uiStylesProperties = uiStylesProperties;
@@ -103,10 +103,10 @@ public class MainPanel extends Panel {
     }
 
     private void initComponents() {
-        header = new HeaderPanel(this, scrollPane);
+        header = new HeaderPanel(this);
         footer = new FooterPanel(this);
         add(header);
-        setPage(Page.LOGIN_PAGE);
+        setPage(PageName.LOGIN_PAGE);
         add(footer);
         setBackground(Color.WHITE);
     }
@@ -120,5 +120,13 @@ public class MainPanel extends Panel {
     public void setScrollPane(JScrollPane scrollPane) {
         this.scrollPane = scrollPane;
         init();
+    }
+
+    public JScrollPane getScrollPane() {
+        return scrollPane;
+    }
+
+    public void shakeOnce() {
+        mainFrame.shakeOnce();
     }
 }

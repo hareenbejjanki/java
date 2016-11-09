@@ -14,18 +14,19 @@ import com.bhirava.ovilearning.ui.util.PropertyUtil;
 public class VideoPage extends Panel {
     private static final long serialVersionUID = 1L;
 
-    public VideoPage(Panel parentComponent, String title, String videoPath) {
-        super(parentComponent, getBounds(parentComponent));
+    public VideoPage(String title, String videoPath, MainPanel mainPanel) {
+        super(title, getBounds(mainPanel), mainPanel, mainPanel);
         init(title, videoPath);
     }
 
     private void init(String title, String videoPath) {
         setBackground(Color.GRAY);
-        MainPanel mainPanel = (MainPanel) parentComponent;
+
         Properties uiPositionProperties = mainPanel.getUiPositionProperties();
         Properties uiStylesProperties = mainPanel.getUiStylesProperties();
         Properties generalProperties = mainPanel.getGeneralProperties();
-        VideoPanel videoPanel = new VideoPanel(this, videoPath, getVideoBounds());
+
+        VideoPanel videoPanel = new VideoPanel("DUMMY", videoPath, getVideoBounds(), this, mainPanel);
         videoPanel.makeCenterPositioned();
         videoPanel.setLocation(videoPanel.getBounds().x, videoPanel.getBounds().y + 70);
         Label label = getTitleLabel(title, uiPositionProperties, uiStylesProperties, generalProperties);
@@ -50,7 +51,7 @@ public class VideoPage extends Panel {
         return new Rectangle(x, y, width, height);
     }
 
-    private static Rectangle getBounds(Panel parentComponent) {
+    private static Rectangle getBounds(Panel mainPanel) {
         int x = 0;
         int y = 0;
         int width = 1440;

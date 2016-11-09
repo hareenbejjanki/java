@@ -3,7 +3,7 @@ package com.bhirava.ovilearning.ui.event;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import com.bhirava.ovilearning.constants.Page;
+import com.bhirava.ovilearning.constants.PageName;
 import com.bhirava.ovilearning.ui.component.MainPanel;
 
 public class VideoPageNavigator implements ActionListener {
@@ -19,7 +19,7 @@ public class VideoPageNavigator implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        mainPanel.setPage(Page.VIDEO_PAGE, titile, videoPath);
+        mainPanel.setPage(PageName.VIDEO_PAGE, titile, videoPath);
     }
 
 }

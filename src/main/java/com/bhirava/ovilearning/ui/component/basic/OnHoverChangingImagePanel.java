@@ -9,13 +9,14 @@ import javax.swing.JLabel;
 
 import com.bhirava.ovilearning.constants.ChildName;
 import com.bhirava.ovilearning.constants.UIConstants;
+import com.bhirava.ovilearning.ui.component.MainPanel;
 import com.bhirava.ovilearning.ui.event.OnHoverImageChanger;
 
 public class OnHoverChangingImagePanel extends Panel {
     private static final long serialVersionUID = 1L;
 
-    public OnHoverChangingImagePanel(Panel parentComponent, String imagePath, String hoverImagePath, Rectangle bounds) {
-        super(parentComponent, bounds);
+    public OnHoverChangingImagePanel(String name, String imagePath, String hoverImagePath, Rectangle bounds, Panel parentComponent, MainPanel mainPanel) {
+        super(name, bounds, parentComponent, mainPanel);
         setBackground(UIConstants.Styles.TRANSPARENT_COLOR);
         Icon image = new ImageIcon(Toolkit.getDefaultToolkit().createImage(imagePath));
         Icon hoverImage = new ImageIcon(Toolkit.getDefaultToolkit().createImage(hoverImagePath));
