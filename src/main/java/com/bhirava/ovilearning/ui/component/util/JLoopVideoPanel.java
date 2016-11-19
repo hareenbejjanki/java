@@ -1,4 +1,4 @@
-package com.bhirava.ovilearning.ui.component.basic;
+package com.bhirava.ovilearning.ui.component.util;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;

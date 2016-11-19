@@ -1,21 +1,21 @@
 package com.bhirava.ovilearning.ui.event;
 
+import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.Icon;
-import javax.swing.JLabel;
+import com.bhirava.ovilearning.ui.component.basic.OnHoverChangingImagePanel;
 
 public class OnHoverImageChanger implements MouseListener {
 
-    private JLabel label;
-    private Icon backgroundIcon;
-    private Icon hoverIcon;
+    private OnHoverChangingImagePanel onHoverChangingImagePanel;
+    private Image image;
+    private Image hoverImage;
 
-    public OnHoverImageChanger(JLabel label, Icon backgroundIcon, Icon hoverIcon) {
-        this.label = label;
-        this.backgroundIcon = backgroundIcon;
-        this.hoverIcon = hoverIcon;
+    public OnHoverImageChanger(OnHoverChangingImagePanel onHoverChangingImagePanel, Image image, Image hoverImage) {
+        this.onHoverChangingImagePanel = onHoverChangingImagePanel;
+        this.image = image;
+        this.hoverImage = hoverImage;
     }
 
     public void mouseClicked(MouseEvent e) {
@@ -28,10 +28,12 @@ public class OnHoverImageChanger implements MouseListener {
     }
 
     public void mouseEntered(MouseEvent e) {
-        label.setIcon(hoverIcon);
+        onHoverChangingImagePanel.setImage(hoverImage);
+        onHoverChangingImagePanel.repaint();
     }
 
     public void mouseExited(MouseEvent e) {
-        label.setIcon(backgroundIcon);
+        onHoverChangingImagePanel.setImage(image);
+        onHoverChangingImagePanel.repaint();
     }
 }

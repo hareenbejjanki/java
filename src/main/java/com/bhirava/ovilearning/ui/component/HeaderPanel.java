@@ -12,7 +12,6 @@ import com.bhirava.ovilearning.constants.UIConstants;
 import com.bhirava.ovilearning.ui.component.basic.ImagePanel;
 import com.bhirava.ovilearning.ui.component.basic.Label;
 import com.bhirava.ovilearning.ui.component.basic.OnHoverChangingImagePanel;
-import com.bhirava.ovilearning.ui.component.basic.Panel;
 import com.bhirava.ovilearning.ui.component.basic.VerticallyMovingPanel;
 import com.bhirava.ovilearning.ui.util.PropertyUtil;
 
@@ -26,26 +25,26 @@ public class HeaderPanel extends VerticallyMovingPanel {
     }
 
     private static Rectangle getBounds(MainPanel mainPanel) {
-        Properties positionProperties = mainPanel.getUiPositionProperties();
+        Properties positionProperties = mainPanel.getPropertyValues().getPositionProperties();
 
         return new Rectangle(0, 0, PropertyUtil.getInteger(positionProperties, UIConstants.Positions.MAIN_PANEL_WIDTH), PropertyUtil.getInteger(
                 positionProperties, UIConstants.Positions.HEADER_HEIGHT));
     }
 
     private static Color getScrollColor(MainPanel mainPanel) {
-        Properties uiStylesProperties = mainPanel.getUiStylesProperties();
+        Properties uiStylesProperties = mainPanel.getPropertyValues().getStylesProperties();
         return PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.HEADER_BG_COLOR);
     }
 
     private static Color getInitialColor(MainPanel mainPanel) {
-        Properties uiStylesProperties = mainPanel.getUiStylesProperties();
+        Properties uiStylesProperties = mainPanel.getPropertyValues().getStylesProperties();
         return PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.HEADER_BG_INIT_COLOR);
     }
 
     private void init() {
-        Properties uiPositionProperties = mainPanel.getUiPositionProperties();
-        Properties uiStylesProperties = mainPanel.getUiStylesProperties();
-        Properties generalProperties = mainPanel.getGeneralProperties();
+        Properties uiPositionProperties = mainPanel.getPropertyValues().getPositionProperties();
+        Properties uiStylesProperties = mainPanel.getPropertyValues().getStylesProperties();
+        Properties generalProperties = mainPanel.getPropertyValues().getGeneralProperties();
 
         ImagePanel logo = new ImagePanel(ChildName.MainPage.HeaderPanel.LOGO.name(), generalProperties.getProperty(Constants.General.LOGO_PATH),
                 getLogoBounds(uiPositionProperties), this, mainPanel);
@@ -76,7 +75,7 @@ public class HeaderPanel extends VerticallyMovingPanel {
                 * PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.HEADER_LABEL_MARGIN) + registerLabel.getSize().width
                 + loginLabel.getSize().width + tourLabel.getSize().width;
 
-        Label label = new Label(this, text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, hoverColor);
+        Label label = new Label(text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, hoverColor, this);
         label.makeVerticallyCenterPositioned(x);
 
         return label;
@@ -94,7 +93,7 @@ public class HeaderPanel extends VerticallyMovingPanel {
                 * PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.HEADER_LABEL_MARGIN) + registerLabel.getSize().width
                 + loginLabel.getSize().width;
 
-        Label label = new Label(this, text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, hoverColor);
+        Label label = new Label(text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, hoverColor, this);
         label.makeVerticallyCenterPositioned(x);
 
         return label;
@@ -110,7 +109,7 @@ public class HeaderPanel extends VerticallyMovingPanel {
                 + PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.HEADER_SEARCH_ICON_WIDTH) + 2
                 * PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.HEADER_LABEL_MARGIN) + registerLabel.getSize().width;
 
-        Label label = new Label(this, text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, hoverColor);
+        Label label = new Label(text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, hoverColor, this);
         label.makeVerticallyCenterPositioned(x);
 
         return label;
@@ -126,7 +125,7 @@ public class HeaderPanel extends VerticallyMovingPanel {
                 + PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.HEADER_SEARCH_ICON_WIDTH)
                 + PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.HEADER_LABEL_MARGIN);
 
-        Label label = new Label(this, text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, hoverColor);
+        Label label = new Label(text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, hoverColor, this);
         label.makeVerticallyCenterPositioned(x);
 
         return label;

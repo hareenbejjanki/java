@@ -29,9 +29,9 @@ public class VideoListPanel extends Panel {
     }
 
     private void initLeft() {
-        Properties uiPositionProperties = mainPanel.getUiPositionProperties();
-        Properties uiStylesProperties = mainPanel.getUiStylesProperties();
-        Properties generalProperties = mainPanel.getGeneralProperties();
+        Properties uiPositionProperties = mainPanel.getPropertyValues().getPositionProperties();
+        Properties uiStylesProperties = mainPanel.getPropertyValues().getStylesProperties();
+        Properties generalProperties = mainPanel.getPropertyValues().getGeneralProperties();
 
         Label progressLabel = getProgressLabel(uiPositionProperties, uiStylesProperties, generalProperties);
         Label progressValueLabel = getProgressValueLabel(uiPositionProperties, uiStylesProperties, generalProperties);
@@ -89,7 +89,7 @@ public class VideoListPanel extends Panel {
         Integer y = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_MAIN_PANEL_PROGRESS_Y) + progressLabel.getSize().height
                 + progressBar.getSize().height + 2 * PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_MAIN_PANEL_LEFT_MARGIN);
 
-        Label label = new Label(this, text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR);
+        Label label = new Label(text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, this);
         label.setLocation(x, y);
 
         return label;
@@ -106,7 +106,7 @@ public class VideoListPanel extends Panel {
         Integer y = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_MAIN_PANEL_PROGRESS_Y) + progressLabel.getSize().height
                 + progressBar.getSize().height + 2 * PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_MAIN_PANEL_LEFT_MARGIN);
 
-        Label label = new Label(this, text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR);
+        Label label = new Label(text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, this);
         label.setLocation(x, y);
 
         return label;
@@ -123,7 +123,7 @@ public class VideoListPanel extends Panel {
         Integer y = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_MAIN_PANEL_PROGRESS_Y) + progressLabel.getSize().height
                 + progressBar.getSize().height + 2 * PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_MAIN_PANEL_LEFT_MARGIN);
 
-        Label label = new Label(this, text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR);
+        Label label = new Label(text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, this);
         label.setLocation(x, y);
 
         return label;
@@ -139,7 +139,7 @@ public class VideoListPanel extends Panel {
         Integer y = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_MAIN_PANEL_PROGRESS_Y) + progressLabel.getSize().height
                 + progressBar.getSize().height + 2 * PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_MAIN_PANEL_LEFT_MARGIN);
 
-        Label label = new Label(this, text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR);
+        Label label = new Label(text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, this);
         label.setLocation(x, y);
 
         return label;
@@ -153,7 +153,7 @@ public class VideoListPanel extends Panel {
         Integer width = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_MAIN_PANEL_LEFT_WIDTH);
         Integer y = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_MAIN_PANEL_PROGRESS_Y);
 
-        Label label = new Label(this, text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR);
+        Label label = new Label(text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, this);
         label.setLocation(width - label.getSize().width, y);
 
         return label;
@@ -167,14 +167,14 @@ public class VideoListPanel extends Panel {
         Integer x = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_MAIN_PANEL_LEFT_X);
         Integer y = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_MAIN_PANEL_PROGRESS_Y);
 
-        Label label = new Label(this, text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR);
+        Label label = new Label(text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, this);
         label.setLocation(x, y);
 
         return label;
     }
 
     private static Rectangle getBounds(MainPanel mainPanel) {
-        Properties uiPositionProperties = mainPanel.getUiPositionProperties();
+        Properties uiPositionProperties = mainPanel.getPropertyValues().getPositionProperties();
         int x = 0;
         int y = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_HEADER_HEIGHT)
                 + PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_NAVIGATION_HEIGHT);

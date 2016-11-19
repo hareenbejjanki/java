@@ -10,6 +10,11 @@ public class UIConstants {
         public static final String FRAME_HEIGHT = "frame.height";
         public static final String MAIN_PANEL_WIDTH = "main.panel.width";
 
+        public static final String BLACK_THEME_HEADER_LABEL1_Y = "black.theme.header.label1.y";
+        public static final String BLACK_THEME_HEADER_LABEL2_Y = "black.theme.header.label2.y";
+        public static final String BLACK_THEME_HEADER_HEIGHT = "black.theme.header.height";
+        public static final String BLACK_THEME_HEADER_MENU_RIGHT = "black.theme.header.menu.right";
+
         public static final String HEADER_LOGO_HEIGHT = "header.logo.height";
         public static final String HEADER_LOGO_WIDTH = "header.logo.width";
         public static final String HEADER_LOGO_X = "header.logo.x";
@@ -82,6 +87,8 @@ public class UIConstants {
     public static class Styles {
         public static final String BLACK_THEME_HEADER1_FONT = "black.theme.header1.font";
         public static final String BLACK_THEME_HEADER2_FONT = "black.theme.header2.font";
+        public static final String BLACK_THEME_HEADER1_FONT_COLOR = "black.theme.header1.font.color";
+        public static final String BLACK_THEME_HEADER2_FONT_COLOR = "black.theme.header2.font.color";
 
         public static final String HEADER_BG_COLOR = "header.bg.color";
         public static final String HEADER_BG_INIT_COLOR = "header.bg.init.color";
@@ -160,6 +167,14 @@ public class UIConstants {
         public static final int DEFAULT_FONT_STYLE = Font.PLAIN;
     }
 
+    public static class TextAndPaths {
+        public static final String BLACK_THEME_HEADER_REGISTER_TEXT = "black.theme.header.register.text";
+        public static final String BLACK_THEME_HEADER_LOGIN_TEXT = "black.theme.header.login.text";
+        public static final String BLACK_THEME_HEADER_LOGOUT_TEXT = "black.theme.header.logout.text";
+        public static final String BLACK_THEME_HEADER_TOUR_TEXT = "black.theme.header.tour.text";
+        public static final String BLACK_THEME_HEADER_MEDIUM_TEXT = "black.theme.header.medium.text";
+    }
+    
     public static class Other {
         public static final String LOGIN_HEADER1_TEXT = "login.header1.text";
         public static final String LOGIN_HEADER2_TEXT = "login.header2.text";

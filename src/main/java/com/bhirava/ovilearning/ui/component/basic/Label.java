@@ -13,11 +13,11 @@ public class Label extends JLabel {
     private static final long serialVersionUID = 1L;
     private Panel parentPanel;
 
-    public Label(Panel parentPanel, String text, Font font, Color foreground, Color background) {
-        this(parentPanel, text, font, foreground, background, null);
+    public Label(String text, Font font, Color foreground, Color background, Panel parentPanel) {
+        this(text, font, foreground, background, null, parentPanel);
     }
 
-    public Label(Panel parentPanel, String text, Font font, Color foreground, Color background, Color onHoverColor) {
+    public Label(String text, Font font, Color foreground, Color background, Color onHoverColor, Panel parentPanel) {
         super(text);
         this.parentPanel = parentPanel;
         setFont(font);

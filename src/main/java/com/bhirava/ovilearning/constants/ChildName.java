@@ -2,6 +2,24 @@ package com.bhirava.ovilearning.constants;
 
 public class ChildName {
 
+    public static class BlackTheme {
+        public enum Child {
+            TITLE_HEADER_PANEL
+        }
+
+        public enum HeaderPanel {
+            LOGO, MENU
+        }
+
+        public enum HeaderTextMenuPanel {
+            SEARCH_MENU_ITEM, TEXT_MENU, SIDE_MENU_ITEM
+        }
+
+        public enum TitleHeaderPanel {
+            IMAGE_PANEL, LABEL1, LABEL2
+        }
+    }
+
     public static class LoginPage {
         public enum Child {
             HEADER_PANEL, VOID_LOGIN_PANEL
@@ -35,7 +53,11 @@ public class ChildName {
     }
 
     public enum General {
-        CENTER_PANEL, BUTTON, IMAGE, LABEL, HEADING, SPLIT, FOOTER, HEADER
+        BUTTON, IMAGE, LABEL, HEADING, SPLIT, FOOTER, HEADER, LOGO
+    }
+
+    public enum PAGE {
+        HEADER_PANEL, FOOTER_PANEL, CONTENT_PANEL, LEFT_SIDE_MENU, RIGHT_SIDE_MENU,
     }
 
     public static class MainPage {

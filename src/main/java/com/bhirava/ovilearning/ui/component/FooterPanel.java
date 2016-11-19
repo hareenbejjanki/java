@@ -18,7 +18,7 @@ public class FooterPanel extends Panel {
 	}
 
     private static Rectangle getBounds(MainPanel mainPanel) {
-        Properties positionProperties = mainPanel.getUiPositionProperties();
+        Properties positionProperties = mainPanel.getPropertyValues().getPositionProperties();
 
         return new Rectangle(0, 0, PropertyUtil.getInteger(positionProperties, UIConstants.Positions.MAIN_PANEL_WIDTH), getHeight(positionProperties));
     }
@@ -36,8 +36,8 @@ public class FooterPanel extends Panel {
 	}
 
 	private void initStyles() {
-		Properties stylesProperties = mainPanel.getUiStylesProperties();
-		Properties positionProperties = mainPanel.getUiPositionProperties();
+		Properties stylesProperties = mainPanel.getPropertyValues().getStylesProperties();
+		Properties positionProperties = mainPanel.getPropertyValues().getPositionProperties();
 
 		setBackground(PropertyUtil.getColor(stylesProperties, UIConstants.Styles.FOOTER_BG_COLOR));
 

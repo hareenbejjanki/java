@@ -22,9 +22,9 @@ public class CopyRightsPanel extends Panel {
     }
 
     private void init() {
-        Properties uiPositionProperties = mainPanel.getUiPositionProperties();
-        Properties uiStylesProperties = mainPanel.getUiStylesProperties();
-        Properties generalProperties = mainPanel.getGeneralProperties();
+        Properties uiPositionProperties = mainPanel.getPropertyValues().getPositionProperties();
+        Properties uiStylesProperties = mainPanel.getPropertyValues().getStylesProperties();
+        Properties generalProperties = mainPanel.getPropertyValues().getGeneralProperties();
 
         setBackground(PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.FOOTER_COPYRIGHTS_BG_COLOR));
 
@@ -38,14 +38,14 @@ public class CopyRightsPanel extends Panel {
         Color fontColor = PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.FOOTER_COPYRIGHTS_FONT_COLOR);
         String text = generalProperties.getProperty(Constants.General.FOOTER_COPYRIGHTS_TEXT);
 
-        Label label = new Label(this, text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR);
+        Label label = new Label(text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, this);
         label.makeCenterPositioned();
 
         return label;
     }
 
     private static Rectangle getBounds(MainPanel mainPanel) {
-        Properties uiPositionProperties = mainPanel.getUiPositionProperties();
+        Properties uiPositionProperties = mainPanel.getPropertyValues().getPositionProperties();
 
         int y = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FOOTER_MENU_HEIGHT);
         int width = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FRAME_WIDTH);

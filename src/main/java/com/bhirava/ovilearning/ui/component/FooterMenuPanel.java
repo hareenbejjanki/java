@@ -25,9 +25,9 @@ public class FooterMenuPanel extends Panel {
     }
 
     private void init() {
-        Properties uiPositionProperties = mainPanel.getUiPositionProperties();
-        Properties uiStylesProperties = mainPanel.getUiStylesProperties();
-        Properties generalProperties = mainPanel.getGeneralProperties();
+        Properties uiPositionProperties = mainPanel.getPropertyValues().getPositionProperties();
+        Properties uiStylesProperties = mainPanel.getPropertyValues().getStylesProperties();
+        Properties generalProperties = mainPanel.getPropertyValues().getGeneralProperties();
 
         setBackground(PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.FOOTER_BG_COLOR));
 
@@ -139,7 +139,7 @@ public class FooterMenuPanel extends Panel {
         int x = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FOOTER_MENU_SUBMENU3_X);
         int y = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FOOTER_MENU_INFOLINE_Y);
 
-        Label label = new Label(this, text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR);
+        Label label = new Label(text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, this);
         label.setLocation(x, y);
 
         return label;
@@ -154,7 +154,7 @@ public class FooterMenuPanel extends Panel {
         int x = infoLineLabel.getSize().width + PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FOOTER_MENU_SUBMENU3_X);
         int y = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FOOTER_MENU_INFOLINE_Y);
 
-        Label label = new Label(this, text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, fontHoverColor);
+        Label label = new Label(text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, fontHoverColor, this);
         label.setLocation(x, y);
 
         return label;
@@ -171,7 +171,7 @@ public class FooterMenuPanel extends Panel {
         int y = infoLineLabel.getSize().height + PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FOOTER_MENU_SUBMENU_MARGIN)
                 + PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FOOTER_MENU_INFOLINE_Y);
 
-        Label label = new Label(this, text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, fontHoverColor);
+        Label label = new Label(text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, fontHoverColor, this);
         label.setLocation(x, y);
 
         return label;
@@ -186,14 +186,14 @@ public class FooterMenuPanel extends Panel {
         int y = infoLineLabel.getSize().height + PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FOOTER_MENU_SUBMENU_MARGIN)
                 + PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FOOTER_MENU_INFOLINE_Y);
 
-        Label label = new Label(this, text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR);
+        Label label = new Label(text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, this);
         label.setLocation(x, y);
 
         return label;
     }
 
     private static Rectangle getBounds(MainPanel mainPanel) {
-        Properties uiPositionProperties = mainPanel.getUiPositionProperties();
+        Properties uiPositionProperties = mainPanel.getPropertyValues().getPositionProperties();
         int width = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FRAME_WIDTH);
         int height = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FOOTER_MENU_HEIGHT);
         return new Rectangle(0, 0, width, height);

@@ -22,9 +22,9 @@ public class VideoListTopicsPanel extends Panel {
     }
 
     private void init() {
-        Properties uiStylesProperties = mainPanel.getUiStylesProperties();
-        Properties uiPositionProperties = mainPanel.getUiPositionProperties();
-        Properties generalProperties = mainPanel.getGeneralProperties();
+        Properties uiStylesProperties = mainPanel.getPropertyValues().getStylesProperties();
+        Properties uiPositionProperties = mainPanel.getPropertyValues().getPositionProperties();
+        Properties generalProperties = mainPanel.getPropertyValues().getGeneralProperties();
 
         setBackground(PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.VIDEOLIST_MAIN_PANEL_TOPICS_MAIN_BG_COLOR));
 
@@ -55,7 +55,7 @@ public class VideoListTopicsPanel extends Panel {
 
         Integer x = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_MAIN_PANEL_TOPICS_HEADER_X);
 
-        Label label = new Label(headerPanel, text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR);
+        Label label = new Label(text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, headerPanel);
         label.makeVerticallyCenterPositioned(x);
 
         return label;
@@ -69,7 +69,7 @@ public class VideoListTopicsPanel extends Panel {
     }
 
     private static Rectangle getBounds(MainPanel mainPanel) {
-        Properties uiPositionProperties = mainPanel.getUiPositionProperties();
+        Properties uiPositionProperties = mainPanel.getPropertyValues().getPositionProperties();
 
         int x = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_MAIN_PANEL_TOPICS_X);
         int y = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_MAIN_PANEL_TOPICS_Y);

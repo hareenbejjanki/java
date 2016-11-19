@@ -9,21 +9,21 @@ import javax.swing.JScrollPane;
 import com.bhirava.ovilearning.constants.UIConstants;
 import com.bhirava.ovilearning.ui.event.WindowCloser;
 import com.bhirava.ovilearning.ui.util.PropertyUtil;
+import com.bhirava.ovilearning.ui.util.PropertyValues;
 
 public class MainFrame extends JFrame {
     private static final long serialVersionUID = 1L;
 
     private JScrollPane scrollPane;
-    
 
-    public MainFrame(Properties uiPositionProperties, Properties uiStylesProperties, Properties otherProperties, Properties generalProperties) {
-        init(uiPositionProperties, uiStylesProperties, otherProperties, generalProperties);
+    public MainFrame(PropertyValues propertyValues) {
+        init(propertyValues);
         setVisible(true);
     }
 
-    private void init(Properties uiPositionProperties, Properties uiStylesProperties, Properties otherProperties, Properties generalProperties) {
-        initProperties(uiPositionProperties);
-        initComponents(uiPositionProperties, uiStylesProperties, otherProperties, generalProperties);
+    private void init(PropertyValues propertyValues) {
+        initProperties(propertyValues.getPositionProperties());
+        initComponents(propertyValues);
         initEvents();
     }
 
@@ -31,11 +31,11 @@ public class MainFrame extends JFrame {
         addWindowListener(new WindowCloser(this));
     }
 
-    private void initComponents(Properties uiPositionProperties, Properties uiStylesProperties, Properties otherProperties, Properties generalProperties) {
-        MainPanel mainPanel = new MainPanel(this, uiPositionProperties, uiStylesProperties, otherProperties, generalProperties);
+    private void initComponents(PropertyValues propertyValues) {
+        MainPanel mainPanel = new MainPanel(this, propertyValues);
         scrollPane = new JScrollPane(mainPanel);
         mainPanel.setScrollPane(scrollPane);
-        setScrollPaneProperties(scrollPane, uiPositionProperties);
+        setScrollPaneProperties(scrollPane, propertyValues.getPositionProperties());
         add(scrollPane);
     }
 

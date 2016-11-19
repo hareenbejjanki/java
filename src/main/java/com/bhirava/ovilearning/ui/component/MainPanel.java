@@ -6,46 +6,40 @@ import java.util.Properties;
 
 import javax.swing.JScrollPane;
 
+import com.bhirava.ovilearning.bean.User;
 import com.bhirava.ovilearning.constants.PageName;
 import com.bhirava.ovilearning.constants.UIConstants;
 import com.bhirava.ovilearning.ui.component.basic.Panel;
 import com.bhirava.ovilearning.ui.component.login.LoginPage;
 import com.bhirava.ovilearning.ui.component.videolist.VideoListPage;
 import com.bhirava.ovilearning.ui.util.PropertyUtil;
+import com.bhirava.ovilearning.ui.util.PropertyValues;
 
 public class MainPanel extends Panel {
     private static final long serialVersionUID = 1L;
 
-    private Properties uiPositionProperties;
-    private Properties uiStylesProperties;
-    private Properties uiOtherProperties;
-    private Properties generalProperties;
+    private PropertyValues propertyValues;
     private Panel header;
     private Panel currentPage;
     private Panel footer;
     private JScrollPane scrollPane;
-    private Panel sideMenu;
-
+    private User user;
     private MainFrame mainFrame;
 
-    public Properties getUiPositionProperties() {
-        return uiPositionProperties;
-    }
-
-    public Properties getUiOtherProperties() {
-        return uiOtherProperties;
-    }
-
-    public Properties getUiStylesProperties() {
-        return uiStylesProperties;
-    }
-
-    public Properties getGeneralProperties() {
-        return generalProperties;
+    public PropertyValues getPropertyValues() {
+        return propertyValues;
     }
 
     public Panel getCurrentPage() {
         return currentPage;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public void setPage(PageName page) {
@@ -76,21 +70,18 @@ public class MainPanel extends Panel {
         }
 
         footer.setLocation(0, currentPage.getHeight());
-        scrollPane.setPreferredSize(new Dimension(PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.MAIN_PANEL_WIDTH), currentPage
-                .getHeight() + footer.getHeight()));
-        setPreferredSize(new Dimension(PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.MAIN_PANEL_WIDTH), currentPage.getHeight()
-                + footer.getHeight()));
+        scrollPane.setPreferredSize(new Dimension(PropertyUtil.getInteger(propertyValues.getPositionProperties(), UIConstants.Positions.MAIN_PANEL_WIDTH),
+                currentPage.getHeight() + footer.getHeight()));
+        setPreferredSize(new Dimension(PropertyUtil.getInteger(propertyValues.getPositionProperties(), UIConstants.Positions.MAIN_PANEL_WIDTH),
+                currentPage.getHeight() + footer.getHeight()));
         add(currentPage);
         mainFrame.shakeOnce();
     }
 
-    public MainPanel(MainFrame mainFrame, Properties uiPositionProperties, Properties uiStylesProperties, Properties uiOtherProperties, Properties generalProperties) {
+    public MainPanel(MainFrame mainFrame, PropertyValues propertyValues) {
         super("MainPanel", null, null, null);
         this.mainFrame = mainFrame;
-        this.uiPositionProperties = uiPositionProperties;
-        this.uiStylesProperties = uiStylesProperties;
-        this.uiOtherProperties = uiOtherProperties;
-        this.generalProperties = generalProperties;
+        this.propertyValues = propertyValues;
     }
 
     private void init() {
@@ -114,7 +105,7 @@ public class MainPanel extends Panel {
     private void initProperties() {
         setLayout(null);
         setOpaque(false);
-        setPreferredSize(new Dimension(PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.MAIN_PANEL_WIDTH), 3000));
+        setPreferredSize(new Dimension(PropertyUtil.getInteger(propertyValues.getPositionProperties(), UIConstants.Positions.MAIN_PANEL_WIDTH), 3000));
     }
 
     public void setScrollPane(JScrollPane scrollPane) {

@@ -25,9 +25,9 @@ public class TopicPanel extends Panel {
     }
 
     private void init(int count) {
-        Properties uiPositionProperties = mainPanel.getUiPositionProperties();
-        Properties uiStylesProperties = mainPanel.getUiStylesProperties();
-        Properties generalProperties = mainPanel.getGeneralProperties();
+        Properties uiPositionProperties = mainPanel.getPropertyValues().getPositionProperties();
+        Properties uiStylesProperties = mainPanel.getPropertyValues().getStylesProperties();
+        Properties generalProperties = mainPanel.getPropertyValues().getGeneralProperties();
 
         setBackground(PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.VIDEOLIST_MAIN_PANEL_BG_COLOR));
 
@@ -85,7 +85,7 @@ public class TopicPanel extends Panel {
         Color fontColor = PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.VIDEOLIST_MAIN_PANEL_TOPICS_DURATION_FONT_COLOR);
         String text = generalProperties.getProperty(Constants.General.VIDEOLIST_TOPIC + count + Constants.General.VIDEOLIST_TOPIC_DURATION_POSTFIX);
 
-        Label label = new Label(this, text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR);
+        Label label = new Label(text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, this);
         int x = iconPanel.getBounds().x + iconPanel.getBounds().width
                 + PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_MAIN_PANEL_TOPIC_MARGIN_FROM_ICON);
         int y = iconPanel.getBounds().y + iconPanel.getBounds().height
@@ -100,7 +100,7 @@ public class TopicPanel extends Panel {
         Color fontColor = PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.VIDEOLIST_MAIN_PANEL_TOPICS_TITLE_FONT_COLOR);
         String text = generalProperties.getProperty(Constants.General.VIDEOLIST_TOPIC + count);
 
-        Label label = new Label(this, text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR);
+        Label label = new Label(text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, this);
         int x = iconPanel.getBounds().x + iconPanel.getBounds().width
                 + PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_MAIN_PANEL_TOPIC_MARGIN_FROM_ICON);
         int y = iconPanel.getBounds().y - label.getSize().height
@@ -114,14 +114,14 @@ public class TopicPanel extends Panel {
         Font font = PropertyUtil.getFont(uiStylesProperties, UIConstants.Styles.VIDEOLIST_MAIN_PANEL_TOPICS_COUNT_FONT);
         Color fontColor = PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.VIDEOLIST_MAIN_PANEL_TOPICS_COUNT_FONT_COLOR);
 
-        Label label = new Label(countPanel, count + "", font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR);
+        Label label = new Label(count + "", font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, countPanel);
         label.makeCenterPositioned();
 
         return label;
     }
 
     private static Rectangle getBounds(MainPanel mainPanel, int count) {
-        Properties uiPositionProperties = mainPanel.getUiPositionProperties();
+        Properties uiPositionProperties = mainPanel.getPropertyValues().getPositionProperties();
 
         int x = 0;
         int y = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_MAIN_PANEL_TOPICS_HEADER_HEIGHT) + (count - 1)

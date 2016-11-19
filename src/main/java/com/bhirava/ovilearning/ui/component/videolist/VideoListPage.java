@@ -1,7 +1,6 @@
 package com.bhirava.ovilearning.ui.component.videolist;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.util.Properties;
@@ -24,7 +23,7 @@ public class VideoListPage extends Panel {
     }
 
     private static Rectangle getBounds(MainPanel mainPanel) {
-        Properties positionProperties = mainPanel.getUiPositionProperties();
+        Properties positionProperties = mainPanel.getPropertyValues().getPositionProperties();
 
         return new Rectangle(0, 0, PropertyUtil.getInteger(positionProperties, UIConstants.Positions.MAIN_PANEL_WIDTH), getHeight(positionProperties));
     }
@@ -47,9 +46,9 @@ public class VideoListPage extends Panel {
     }
 
     private Panel getNavigationPanel() {
-        Properties uiPositionProperties = mainPanel.getUiPositionProperties();
-        Properties uiStylesProperties = mainPanel.getUiStylesProperties();
-        Properties generalProperties = mainPanel.getGeneralProperties();
+        Properties uiPositionProperties = mainPanel.getPropertyValues().getPositionProperties();
+        Properties uiStylesProperties = mainPanel.getPropertyValues().getStylesProperties();
+        Properties generalProperties = mainPanel.getPropertyValues().getGeneralProperties();
 
         int y = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_HEADER_HEIGHT);
         int width = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.MAIN_PANEL_WIDTH);
@@ -72,7 +71,7 @@ public class VideoListPage extends Panel {
 
         Integer x = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.VIDEOLIST_NAVIGATION_LABEL_X);
 
-        Label label = new Label(panel, text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR);
+        Label label = new Label(text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, panel);
         label.makeVerticallyCenterPositioned(x);
 
         return label;

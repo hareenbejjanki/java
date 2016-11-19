@@ -20,7 +20,7 @@ public class LoginPage extends Panel {
     }
 
     private static Rectangle getBounds(MainPanel mainPanel) {
-        Properties positionProperties = mainPanel.getUiPositionProperties();
+        Properties positionProperties = mainPanel.getPropertyValues().getPositionProperties();
 
         return new Rectangle(0, 0, PropertyUtil.getInteger(positionProperties, UIConstants.Positions.MAIN_PANEL_WIDTH), getHeight(positionProperties));
     }
@@ -49,7 +49,7 @@ public class LoginPage extends Panel {
     }
 
     private Rectangle getVoidLoginPanelBounds() {
-        Properties positionProperties = mainPanel.getUiPositionProperties();
+        Properties positionProperties = mainPanel.getPropertyValues().getPositionProperties();
 
         Rectangle bounds = new Rectangle(0, PropertyUtil.getInteger(positionProperties, UIConstants.Positions.LOGIN_HEADER_HEIGHT), PropertyUtil.getInteger(
                 positionProperties, UIConstants.Positions.FRAME_WIDTH), PropertyUtil.getInteger(positionProperties,

@@ -18,7 +18,7 @@ public class VerticalTextMenuPanel extends Panel {
     }
 
     private void init(Color background, String heading, Font headingFont, Color headingColor, List<String> menu, Font menuFont, Color menuColor, Color menuHoverColor, int margin) {
-        Label headingLabel = new Label(this, heading, headingFont, headingColor, UIConstants.Styles.TRANSPARENT_COLOR);
+        Label headingLabel = new Label(heading, headingFont, headingColor, UIConstants.Styles.TRANSPARENT_COLOR, this);
         headingLabel.setLocation(0, 0);
         int y = headingLabel.getSize().height + margin;
         Panel line = new Panel(ChildName.General.SPLIT.name(), new Rectangle(0, y, getBounds().width, 1), this, mainPanel);
@@ -27,7 +27,7 @@ public class VerticalTextMenuPanel extends Panel {
         addChild(ChildName.General.HEADING.name(), headingLabel);
         addChild(line);
         for (String menuItem : menu) {
-            Label menuItemLabel = new Label(this, menuItem, menuFont, menuColor, UIConstants.Styles.TRANSPARENT_COLOR, menuHoverColor);
+            Label menuItemLabel = new Label(menuItem, menuFont, menuColor, UIConstants.Styles.TRANSPARENT_COLOR, menuHoverColor, this);
             menuItemLabel.setLocation(0, y);
             addChild(menuItem, menuItemLabel);
             y += menuItemLabel.getSize().height + margin;

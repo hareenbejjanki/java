@@ -22,9 +22,9 @@ public class VideoPage extends Panel {
     private void init(String title, String videoPath) {
         setBackground(Color.GRAY);
 
-        Properties uiPositionProperties = mainPanel.getUiPositionProperties();
-        Properties uiStylesProperties = mainPanel.getUiStylesProperties();
-        Properties generalProperties = mainPanel.getGeneralProperties();
+        Properties uiPositionProperties = mainPanel.getPropertyValues().getPositionProperties();
+        Properties uiStylesProperties = mainPanel.getPropertyValues().getStylesProperties();
+        Properties generalProperties = mainPanel.getPropertyValues().getGeneralProperties();
 
         VideoPanel videoPanel = new VideoPanel("DUMMY", videoPath, getVideoBounds(), this, mainPanel);
         videoPanel.makeCenterPositioned();
@@ -38,7 +38,7 @@ public class VideoPage extends Panel {
         Font font = PropertyUtil.getFont(uiStylesProperties, UIConstants.Styles.HEADER_LABEL_FONT);
         Color fontColor = PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.HEADER_LABEL_FONT_COLOR);
 
-        Label label = new Label(this, title, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR);
+        Label label = new Label(title, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, this);
 
         return label;
     }

@@ -30,11 +30,11 @@ public class TextBox extends JTextField {
         return parentPanel;
     }
 
-    public TextBox(Panel parentPanel, Font font, Color fontColor, Color borderColor, int borderWidth, Color backgroundColor, Color focusColor, Rectangle bounds) {
-        this(parentPanel, font, fontColor, borderColor, borderWidth, backgroundColor, focusColor, "", bounds);
+    public TextBox(Font font, Color fontColor, Color borderColor, int borderWidth, Color backgroundColor, Color focusColor, Rectangle bounds, Panel parentPanel) {
+        this(font, fontColor, borderColor, borderWidth, backgroundColor, focusColor, "", bounds, parentPanel);
     }
 
-    public TextBox(Panel parentPanel, Font font, Color fontColor, Color borderColor, int borderWidth, Color backgroundColor, Color focusColor, String waterMark, Rectangle bounds) {
+    public TextBox(Font font, Color fontColor, Color borderColor, int borderWidth, Color backgroundColor, Color focusColor, String waterMark, Rectangle bounds, Panel parentPanel) {
         this.parentPanel = parentPanel;
         this.fontColor = fontColor;
         this.borderColor = borderColor;

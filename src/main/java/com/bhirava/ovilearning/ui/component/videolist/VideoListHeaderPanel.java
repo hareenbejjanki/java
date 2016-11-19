@@ -21,22 +21,22 @@ public class VideoListHeaderPanel extends ImageBackgroundPanel {
     }
 
     private static String getImagePath(MainPanel mainPanel) {
-        Properties generalProperties = mainPanel.getGeneralProperties();
+        Properties generalProperties = mainPanel.getPropertyValues().getGeneralProperties();
         return generalProperties.getProperty(Constants.General.LOGIN_HEADER_IMAGE_PATH);
     }
 
     private void init() {
-        Properties uiOtherProperties = mainPanel.getUiOtherProperties();
-        Properties uiStylesProperties = mainPanel.getUiStylesProperties();
-        Properties uiPositionProperties = mainPanel.getUiPositionProperties();
+        Properties uiOtherProperties = mainPanel.getPropertyValues().getOtherProperties();
+        Properties uiStylesProperties = mainPanel.getPropertyValues().getStylesProperties();
+        Properties uiPositionProperties = mainPanel.getPropertyValues().getPositionProperties();
 
-        Label header1 = new Label(this, uiOtherProperties.getProperty(UIConstants.Other.VIDEOLIST_HEADER1_TEXT), PropertyUtil.getFont(uiStylesProperties,
+        Label header1 = new Label(uiOtherProperties.getProperty(UIConstants.Other.VIDEOLIST_HEADER1_TEXT), PropertyUtil.getFont(uiStylesProperties,
                 UIConstants.Styles.LOGIN_HEADER1_FONT), PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.LOGIN_HEADER1_FONT_COLOR),
-                UIConstants.Styles.TRANSPARENT_COLOR);
+                UIConstants.Styles.TRANSPARENT_COLOR, this);
         header1.makeHorizantlyCenterPositioned(PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_HEADER_LABEL1_Y));
-        Label header2 = new Label(this, uiOtherProperties.getProperty(UIConstants.Other.VIDEOLIST_HEADER2_TEXT), PropertyUtil.getFont(uiStylesProperties,
+        Label header2 = new Label(uiOtherProperties.getProperty(UIConstants.Other.VIDEOLIST_HEADER2_TEXT), PropertyUtil.getFont(uiStylesProperties,
                 UIConstants.Styles.LOGIN_HEADER2_FONT), PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.LOGIN_HEADER2_FONT_COLOR),
-                UIConstants.Styles.TRANSPARENT_COLOR);
+                UIConstants.Styles.TRANSPARENT_COLOR, this);
         header2.makeHorizantlyCenterPositioned(PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_HEADER_LABEL2_Y));
 
         addChild(ChildName.LoginPage.HeaderPanel.LABEL1.name(), header1);
@@ -44,7 +44,7 @@ public class VideoListHeaderPanel extends ImageBackgroundPanel {
     }
 
     private static Rectangle getBounds(MainPanel mainPanel) {
-        Properties positionProperties = mainPanel.getUiPositionProperties();
+        Properties positionProperties = mainPanel.getPropertyValues().getPositionProperties();
 
         return new Rectangle(0, 0, PropertyUtil.getInteger(positionProperties, UIConstants.Positions.MAIN_PANEL_WIDTH), PropertyUtil.getInteger(
                 positionProperties, UIConstants.Positions.LOGIN_HEADER_HEIGHT));

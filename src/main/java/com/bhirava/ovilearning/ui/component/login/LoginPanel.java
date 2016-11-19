@@ -27,9 +27,9 @@ public class LoginPanel extends ImageBackgroundPanel {
     }
 
     private void init() {
-        Properties generalProperties = mainPanel.getGeneralProperties();
-        Properties uiStylesProperties = mainPanel.getUiStylesProperties();
-        Properties uiPositionProperties = mainPanel.getUiPositionProperties();
+        Properties generalProperties = mainPanel.getPropertyValues().getGeneralProperties();
+        Properties uiStylesProperties = mainPanel.getPropertyValues().getStylesProperties();
+        Properties uiPositionProperties = mainPanel.getPropertyValues().getPositionProperties();
 
         TextBox emailBox = getEmailTextBox(uiPositionProperties, uiStylesProperties, generalProperties);
         TextBox pwdBox = getPWDTextBox(uiPositionProperties, uiStylesProperties, generalProperties);
@@ -75,7 +75,7 @@ public class LoginPanel extends ImageBackgroundPanel {
                 * PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_LOGIN_PANEL_TEXTBOX_HEIGHT) + 2
                 * PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_LOGIN_PANEL_MARGIN);
 
-        Label label = new Label(this, text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, hoverColor);
+        Label label = new Label(text, font, fontColor, UIConstants.Styles.TRANSPARENT_COLOR, hoverColor, this);
         label.setLocation(x, y);
 
         return label;
@@ -98,7 +98,7 @@ public class LoginPanel extends ImageBackgroundPanel {
 
         Rectangle bounds = new Rectangle(x, y, width, height);
 
-        return new TextBox(this, font, fontColor, borderColor, borderSize, UIConstants.Styles.TRANSPARENT_COLOR, focusColor, text, bounds);
+        return new TextBox(font, fontColor, borderColor, borderSize, UIConstants.Styles.TRANSPARENT_COLOR, focusColor, text, bounds, this);
     }
 
     private TextBox getEmailTextBox(Properties uiPositionProperties, Properties uiStylesProperties, Properties generalProperties) {
@@ -116,17 +116,17 @@ public class LoginPanel extends ImageBackgroundPanel {
 
         Rectangle bounds = new Rectangle(x, y, width, height);
 
-        return new TextBox(this, font, fontColor, borderColor, borderSize, UIConstants.Styles.TRANSPARENT_COLOR, focusColor, text, bounds);
+        return new TextBox(font, fontColor, borderColor, borderSize, UIConstants.Styles.TRANSPARENT_COLOR, focusColor, text, bounds, this);
     }
 
     private static Rectangle getBounds(MainPanel mainPanel) {
-        Properties uiPositionProperties = mainPanel.getUiPositionProperties();
+        Properties uiPositionProperties = mainPanel.getPropertyValues().getPositionProperties();
         return new Rectangle(0, 0, PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.LOGIN_LOGIN_PANEL_WIDTH), PropertyUtil.getInteger(
                 uiPositionProperties, UIConstants.Positions.LOGIN_LOGIN_PANEL_HEIGHT));
     }
 
     private static String getImagePath(MainPanel mainPanel) {
-        Properties generalProperties = mainPanel.getGeneralProperties();
+        Properties generalProperties = mainPanel.getPropertyValues().getGeneralProperties();
         return generalProperties.getProperty(Constants.General.LOGIN_PANEL_IMAGE_PATH);
     }
 }
