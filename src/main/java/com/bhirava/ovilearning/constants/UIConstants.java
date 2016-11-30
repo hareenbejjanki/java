@@ -14,6 +14,10 @@ public class UIConstants {
         public static final String BLACK_THEME_HEADER_LABEL2_Y = "black.theme.header.label2.y";
         public static final String BLACK_THEME_HEADER_HEIGHT = "black.theme.header.height";
         public static final String BLACK_THEME_HEADER_MENU_RIGHT = "black.theme.header.menu.right";
+        public static final String BLACK_THEME_HEADER_MENU_MARGIN = "black.theme.header.menu.margin";
+        public static final String BLACK_THEME_HEADER_LOGO_HEIGHT = "black.theme.header.logo.height";
+        public static final String BLACK_THEME_HEADER_LOGO_WIDTH = "black.theme.header.logo.width";
+        public static final String BLACK_THEME_HEADER_LOGO_X = "black.theme.header.logo.x";
 
         public static final String HEADER_LOGO_HEIGHT = "header.logo.height";
         public static final String HEADER_LOGO_WIDTH = "header.logo.width";
@@ -81,7 +85,16 @@ public class UIConstants {
         public static final String FOOTER_MENU_SUBMENU_WIDTH = "footer.menu.submenu.width";
         public static final String FOOTER_MENU_SUBMENU_MARGIN = "footer.menu.submenu.margin";
         public static final String FOOTER_MENU_INFOLINE_Y = "footer.menu.infoline.y";
-        
+
+        public static final String BLACK_THEME_FOOTER_MENU_LOGO_WIDTH = "black.theme.footer.menu.logo.width";
+        public static final String BLACK_THEME_FOOTER_MENU_LOGO_HEIGHT = "black.theme.footer.menu.logo.height";
+        public static final String BLACK_THEME_FOOTER_MENU_MARGIN = "black.theme.footer.menu.margin";
+        public static final String BLACK_THEME_FOOTER_MENU_SUBMENU_MARGIN = "black.theme.footer.menu.submenu.margin";
+        public static final String BLACK_THEME_FOOTER_MENU_SUBMENU_WIDTH = "black.theme.footer.menu.submenu.width";
+        public static final String BLACK_THEME_FOOTER_MENU_SUBMENU_VERTICAL_MARGIN = "black.theme.footer.menu.submenu.vertical.margin";
+        public static final String BLACK_THEME_FOOTER_MENU_INFOLINE_Y = "black.theme.footer.menu.infoline.y";
+        public static final String BLACK_THEME_FOOTER_MENU_HEIGHT = "black.theme.footer.menu.height";
+        public static final String BLACK_THEME_FOOTER_COPYRIGHTS_VERTICAL_MARGIN = "black.theme.footer.copyrights.vertical.margin";
     }
 
     public static class Styles {
@@ -89,6 +102,12 @@ public class UIConstants {
         public static final String BLACK_THEME_HEADER2_FONT = "black.theme.header2.font";
         public static final String BLACK_THEME_HEADER1_FONT_COLOR = "black.theme.header1.font.color";
         public static final String BLACK_THEME_HEADER2_FONT_COLOR = "black.theme.header2.font.color";
+        public static final String BLACK_THEME_HEADER_BG_INIT_COLOR = "black.theme.header.bg.init.color";
+        public static final String BLACK_THEME_HEADER_BG_INIT_COLOR_OPACITY = "black.theme.header.bg.init.color.opacity";
+        public static final String BLACK_THEME_HEADER_BG_COLOR = "black.theme.header.bg.color";
+        public static final String BLACK_THEME_HEADER_LABEL_FONT = "black.theme.header.label.font";
+        public static final String BLACK_THEME_HEADER_LABEL_FONT_COLOR = "black.theme.header.label.font.color";
+        public static final String BLACK_THEME_HEADER_LABEL_FONT_HOVER_COLOR = "black.theme.header.label.font.hover.color";
 
         public static final String HEADER_BG_COLOR = "header.bg.color";
         public static final String HEADER_BG_INIT_COLOR = "header.bg.init.color";
@@ -161,18 +180,58 @@ public class UIConstants {
         public static final String FOOTER_COPYRIGHTS_BG_COLOR = "footer.copyrights.bg.color";
         public static final String FOOTER_COPYRIGHTS_FONT = "footer.copyrights.font";
         public static final String FOOTER_COPYRIGHTS_FONT_COLOR = "footer.copyrights.font.color";
-        
+
+        public static final String BLACK_THEME_FOOTER_BG_COLOR = "black.theme.footer.bg.color";
+        public static final String BLACK_THEME_FOOTER_HEADER_LABEL_FONT = "black.theme.footer.header.label.font";
+        public static final String BLACK_THEME_FOOTER_HEADER_LABEL_FONT_COLOR = "black.theme.footer.header.label.font.color";
+        public static final String BLACK_THEME_FOOTER_LABEL_HOVER_FONT_COLOR = "black.theme.footer.label.hover.font.color";
+        public static final String BLACK_THEME_FOOTER_LABEL_FONT = "black.theme.footer.label.font";
+        public static final String BLACK_THEME_FOOTER_LABEL_FONT_COLOR = "black.theme.footer.label.font.color";
+        public static final String BLACK_THEME_FOOTER_COPYRIGHTS_BG_COLOR = "black.theme.footer.copyrights.bg.color";
+        public static final String BLACK_THEME_FOOTER_COPYRIGHTS_FONT = "black.theme.footer.copyrights.font";
+        public static final String BLACK_THEME_FOOTER_COPYRIGHTS_FONT_COLOR = "black.theme.footer.copyrights.font.color";
+
         public static final String DEFAULT_FONT_FAMILY = "SansSerif";
         public static final int DEFAULT_FONT_SIZE = 12;
         public static final int DEFAULT_FONT_STYLE = Font.PLAIN;
+        public static final int DEFAULT_ICON_HEIGHT = 10;
     }
 
     public static class TextAndPaths {
+        public static final String LOGO_PATH = "logo.path";
+
         public static final String BLACK_THEME_HEADER_REGISTER_TEXT = "black.theme.header.register.text";
         public static final String BLACK_THEME_HEADER_LOGIN_TEXT = "black.theme.header.login.text";
         public static final String BLACK_THEME_HEADER_LOGOUT_TEXT = "black.theme.header.logout.text";
         public static final String BLACK_THEME_HEADER_TOUR_TEXT = "black.theme.header.tour.text";
         public static final String BLACK_THEME_HEADER_MEDIUM_TEXT = "black.theme.header.medium.text";
+        public static final String BLACK_THEME_HEADER_MENU_TEXT = "black.theme.header.menu.text";
+        public static final String BLACK_THEME_HEADER_IMAGE_PATH = "black.theme.header.image.path";
+        public static final String BLACK_THEME_HEADER_SEARCH_ICON_GREY = "black.theme.header.search.icon.grey";
+        public static final String BLACK_THEME_HEADER_SEARCH_ICON_WHITE = "black.theme.header.search.icon.white";
+        public static final String BLACK_THEME_HEADER_MENU_ICON_GRAY = "black.theme.header.menu.icon.gray";
+        public static final String BLACK_THEME_HEADER_MENU_ICON_WHITE = "black.theme.header.menu.icon.white";
+        
+        public static final String BLACK_THEME_FOOTER_COPYRIGHTS_TEXT = "black.theme.footer.copyrights.text";
+        public static final String BLACK_THEME_FOOTER_MENU1_HEADER = "black.theme.footer.menu1.header";
+        public static final String BLACK_THEME_FOOTER_MENU1_ITEM1 = "black.theme.footer.menu1.item1";
+        public static final String BLACK_THEME_FOOTER_MENU1_ITEM2 = "black.theme.footer.menu1.item2";
+        public static final String BLACK_THEME_FOOTER_MENU1_ITEM3 = "black.theme.footer.menu1.item3";
+        public static final String BLACK_THEME_FOOTER_MENU1_ITEM4 = "black.theme.footer.menu1.item4";
+        public static final String BLACK_THEME_FOOTER_MENU1_ITEM5 = "black.theme.footer.menu1.item5";
+        public static final String BLACK_THEME_FOOTER_MENU2_HEADER = "black.theme.footer.menu2.header";
+        public static final String BLACK_THEME_FOOTER_MENU2_ITEM1 = "black.theme.footer.menu2.item1";
+        public static final String BLACK_THEME_FOOTER_MENU2_ITEM2 = "black.theme.footer.menu2.item2";
+        public static final String BLACK_THEME_FOOTER_MENU2_ITEM3 = "black.theme.footer.menu2.item3";
+        public static final String BLACK_THEME_FOOTER_MENU2_ITEM4 = "black.theme.footer.menu2.item4";
+        public static final String BLACK_THEME_FOOTER_MENU2_ITEM5 = "black.theme.footer.menu2.item5";
+        public static final String BLACK_THEME_FOOTER_MENU3_HEADER = "black.theme.footer.menu3.header";
+        public static final String BLACK_THEME_FOOTER_MENU3_ITEM1 = "black.theme.footer.menu3.item1";
+        public static final String BLACK_THEME_FOOTER_MENU3_ITEM2 = "black.theme.footer.menu3.item2";
+        public static final String BLACK_THEME_FOOTER_INFOLINE = "black.theme.footer.infoline"; 
+        public static final String BLACK_THEME_FOOTER_INFOLINE_TEXT = "black.theme.footer.infoline.text";
+        public static final String BLACK_THEME_FOOTER_EMAIL = "black.theme.footer.email"; 
+        public static final String BLACK_THEME_FOOTER_EMAIL_TEXT = "black.theme.footer.email.text";
     }
     
     public static class Other {

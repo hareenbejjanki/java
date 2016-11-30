@@ -58,6 +58,7 @@ public class Constants {
 
         public static final String LOGO_PATH = "logo.path";
         public static final String BACKGROUND = "BACKGROUND";
+        public static final String DUMMY_TEXT = "DUMMY_TEXT";
     }
 
 }

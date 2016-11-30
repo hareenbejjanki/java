@@ -18,6 +18,10 @@ public class ChildName {
         public enum TitleHeaderPanel {
             IMAGE_PANEL, LABEL1, LABEL2
         }
+
+        public enum FooterPanel {
+            COPY_RIGHTS_PANEL, MENU_PANEL, MENU1, MENU2, MENU3, INFO_LINE, INFO_LINE_TEXT, EMAIL, EMAIL_TEXT, LOGO
+        }
     }
 
     public static class LoginPage {

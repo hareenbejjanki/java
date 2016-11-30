@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/Users/hareen/demos/workspace/others/ovilearning/ovilearning"/>
+    <property name="user.dir" value="/Users/hareen/git/java"/>
     <property name="java.runtime.version" value="1.8.0_91-b14"/>
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="/Users/hareen/jdk1.8/jre/lib/endorsed"/>
@@ -26,7 +26,7 @@
 "/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="os.name" value="Mac OS X"/>
-    <property name="classworlds.conf" value="/Users/hareen/demos/workspace/others/ovilearning/.metadata/.plugins/org.eclipse.m2e.launching/launches/m2conf732022286321475409.tmp"/>
+    <property name="classworlds.conf" value="/Users/hareen/demos/workspace/others/ovilearning/.metadata/.plugins/org.eclipse.m2e.launching/launches/m2conf7325003336598619105.tmp"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
     <property name="java.library.path" value="/Users/hareen/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
@@ -54,7 +54,7 @@
     <property name="java.ext.dirs" value="/Users/hareen/Library/Java/Extensions:/Users/hareen/jdk1.8/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java"/>
     <property name="sun.boot.class.path" value="/Users/hareen/jdk1.8/jre/lib/resources.jar:/Users/hareen/jdk1.8/jre/lib/rt.jar:/Users/hareen/jdk1.8/jre/lib/sunrsasign.jar:/Users/hareen/jdk1.8/jre/lib/jsse.jar:/Users/hareen/jdk1.8/jre/lib/jce.jar:/Users/hareen/jdk1.8/jre/lib/charsets.jar:/Users/hareen/jdk1.8/jre/lib/jfr.jar:/Users/hareen/jdk1.8/jre/classes"/>
     <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="maven.home" value="/Users/hareen/demos/workspace/others/ovilearning/ovilearning/EMBEDDED"/>
+    <property name="maven.home" value="/Users/hareen/git/java/EMBEDDED"/>
     <property name="file.separator" value="/"/>
     <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
     <property name="sun.cpu.endian" value="little"/>
