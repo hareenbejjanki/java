@@ -45,7 +45,7 @@ public class App extends javax.swing.JPanel {
         Properties generalProperties = new Properties();
         positionProperties.load(new FileInputStream(new File(pathPrefix + "properties/ui.position.properties")));
         stylesProperties.load(new FileInputStream(new File(pathPrefix + "properties/ui.styles.properties")));
-        textAndPathsProperties.load(new FileInputStream(new File(pathPrefix + "properties/ui.test.paths.properties")));
+        textAndPathsProperties.load(new FileInputStream(new File(pathPrefix + "properties/ui.text.path.properties")));
         otherProperties.load(new FileInputStream(new File(pathPrefix + "properties/ui.other.properties")));
         generalProperties.load(new FileInputStream(new File(pathPrefix + "properties/general.properties")));
 

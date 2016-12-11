@@ -32,8 +32,10 @@ public class BlackThemeFooterMenuPanel extends Panel {
         setBackground(PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.BLACK_THEME_FOOTER_BG_COLOR));
 
         VerticalTextMenuPanel menu1 = getMenu1();
+        int margin = PropertyUtil.getInteger(uiStylesProperties, UIConstants.Positions.BLACK_THEME_FOOTER_MENU_MARGIN);
+        setBounds(0, 0, mainPanel.getSize().width, menu1.getSize().height + 2 * margin);
         ImagePanel logo = new ImagePanel(ChildName.BlackTheme.FooterPanel.LOGO.name(), textAndPathsProperties.getProperty(UIConstants.TextAndPaths.LOGO_PATH),
-                getLogoBounds(uiPositionProperties), this, mainPanel);
+                getLogoBounds(margin, menu1.getLocation().y), this, mainPanel);
         VerticalTextMenuPanel menu2 = getMenu2(menu1);
         VerticalTextMenuPanel menu3 = getMenu3(menu1);
         Label infoLineLabel = getInfoLineLabel(uiPositionProperties, uiStylesProperties, textAndPathsProperties);
@@ -121,22 +123,23 @@ public class BlackThemeFooterMenuPanel extends Panel {
         Color menuHoverColor = PropertyUtil.getColor(uiStylesProperties, UIConstants.Styles.BLACK_THEME_FOOTER_LABEL_HOVER_FONT_COLOR);
 
         int width = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.BLACK_THEME_FOOTER_MENU_SUBMENU_WIDTH);
-        int margin = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.BLACK_THEME_FOOTER_MENU_SUBMENU_VERTICAL_MARGIN);
+        int verticalMargin = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.BLACK_THEME_FOOTER_MENU_SUBMENU_VERTICAL_MARGIN);
 
         Rectangle bounds = new Rectangle(0, 0, width, UIConstants.Styles.DEFAULT_ICON_HEIGHT);
 
         VerticalTextMenuPanel verticalTextMenuPanel = new VerticalTextMenuPanel(ChildName.BlackTheme.FooterPanel.MENU1.name(), UIConstants.Styles.TRANSPARENT_COLOR, heading, headingFont,
-                headingColor, menu, menuFont, menuColor, menuHoverColor, margin, bounds, this, mainPanel);
+                headingColor, menu, menuFont, menuColor, menuHoverColor, verticalMargin, bounds, this, mainPanel);
         verticalTextMenuPanel.makeVerticallyCenterPositioned(0);
 
         return verticalTextMenuPanel;
     }
 
-    private Rectangle getLogoBounds(Properties uiPositionProperties) {
-        int x = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FOOTER_MENU_LOGO_X);
-        int y = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FOOTER_MENU_LOGO_Y);
+    private Rectangle getLogoBounds(int x, int y) {
+        Properties uiPositionProperties = mainPanel.getPropertyValues().getPositionProperties();
+
         int width = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FOOTER_MENU_LOGO_WIDTH);
         int height = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FOOTER_MENU_LOGO_HEIGHT);
+
         return new Rectangle(x, y, width, height);
     }
 
@@ -200,12 +203,4 @@ public class BlackThemeFooterMenuPanel extends Panel {
 
         return label;
     }
-
-    private static Rectangle getBounds(MainPanel mainPanel) {
-        Properties uiPositionProperties = mainPanel.getPropertyValues().getPositionProperties();
-        int width = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FRAME_WIDTH);
-        int height = PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FOOTER_MENU_HEIGHT);
-        return new Rectangle(0, 0, width, height);
-    }
-
 }
