@@ -52,7 +52,9 @@ public class MainPanel extends Panel {
 
     public void setPage(PageName page, Object param1, Object param2) {
         if (currentPage != null) {
-            currentPage.distroy();
+            // TODO issue concurrent modification exception
+//            currentPage.distroy();
+        	remove(currentPage);
         }
 
         switch (page) {

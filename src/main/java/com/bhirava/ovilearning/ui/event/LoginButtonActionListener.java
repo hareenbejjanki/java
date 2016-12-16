@@ -25,6 +25,7 @@ public class LoginButtonActionListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (emailBox.getText() != null && emailBox.getText().equalsIgnoreCase("abhii4you@gmail.com") && pwdBox.getText() != null && pwdBox.getText().equalsIgnoreCase("12345678")) {
             mainPanel.setPage(PageName.VIDEO_LIST_PAGE);
+            mainPanel.repaint();
         }
     }
 

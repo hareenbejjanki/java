@@ -2,6 +2,7 @@ package com.bhirava.ovilearning.ui.util;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.net.URI;
 import java.util.Properties;
 
 import com.bhirava.ovilearning.constants.FontStyle;
@@ -67,16 +68,15 @@ public class PropertyUtil {
         return getPath(properties, key, "");
     }
 
-    public static String getPathAsURI(Properties properties, String key) {
-        return getPath(properties, key, "file://");
-    }
-
     public static String getPath(Properties properties, String key, String prefix) {
         String pathPrefix = System.getenv("OVILEARNING_HOME");
         String path = properties.getProperty(key);
+        System.out.println(path);
         if (path == null) {
+        	System.out.println(prefix + pathPrefix);
             return prefix + pathPrefix;
         } else {
+        	System.out.println(prefix + pathPrefix + path);
             return prefix + pathPrefix + path;
         }
     }

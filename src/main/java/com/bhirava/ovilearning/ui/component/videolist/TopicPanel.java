@@ -41,7 +41,7 @@ public class TopicPanel extends Panel {
         Label durationLabel = getDurationLabel(count, icon, uiPositionProperties, uiStylesProperties, generalProperties);
         Button button = getButton(count, uiPositionProperties, uiStylesProperties, generalProperties);
         button.addActionListener(new VideoPageNavigator(mainPanel, generalProperties.getProperty(Constants.General.VIDEOLIST_TOPIC + count), PropertyUtil
-                .getPathAsURI(generalProperties, Constants.General.VIDEOLIST_TOPIC + count + Constants.General.VIDEOLIST_TOPIC_VIDEO_PATH_POSTFIX)));
+                .getPath(generalProperties, Constants.General.VIDEOLIST_TOPIC + count + Constants.General.VIDEOLIST_TOPIC_VIDEO_PATH_POSTFIX)));
 
         addChild(countPanel);
         addChild(icon);

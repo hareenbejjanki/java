@@ -20,6 +20,7 @@ public class VideoPageNavigator implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         mainPanel.setPage(PageName.VIDEO_PAGE, titile, videoPath);
+        mainPanel.repaint();
     }
 
 }

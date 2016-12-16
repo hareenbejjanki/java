@@ -1,5 +1,7 @@
 package com.bhirava.ovilearning.ui.component.util;
 
+import java.io.File;
+
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
 import javafx.embed.swing.JFXPanel;
@@ -14,7 +16,7 @@ public class JVideoPanel extends JFXPanel {
     private static final long serialVersionUID = 1L;
 
     public JVideoPanel(String vedioPath, int w, int h) {
-        final Media m = new Media(vedioPath);
+        final Media m = new Media(new File(vedioPath).toURI().toString());
         final MediaPlayer mp = new MediaPlayer(m);
         final MediaView mv = new MediaView(mp);
 

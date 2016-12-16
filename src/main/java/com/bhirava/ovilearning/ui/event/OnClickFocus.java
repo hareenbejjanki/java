@@ -15,6 +15,7 @@ public class OnClickFocus implements MouseListener {
 
     public void mouseClicked(MouseEvent e) {
         panel.requestFocus();
+        panel.getMainPanel().repaint();
     }
 
     public void mousePressed(MouseEvent e) {
