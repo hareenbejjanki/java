@@ -2,13 +2,19 @@ package com.bhirava.ovilearning.ui.util;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.net.URI;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Properties;
+
+import javax.imageio.ImageIO;
 
 import com.bhirava.ovilearning.constants.FontStyle;
 import com.bhirava.ovilearning.constants.UIConstants;
 
 public class PropertyUtil {
+
+    private static final String IMAGE_FOLDER_PROPERTY = "images.base.folder";
 
     public static Integer getInteger(Properties properties, String key) {
         return getInteger(properties, key, null);
@@ -68,10 +74,27 @@ public class PropertyUtil {
         return getPath(properties, key, "");
     }
 
+    public static BufferedImage getImage(Properties properties, String key) throws IOException {
+        return ImageIO.read(getFile(properties, key, properties.getProperty(IMAGE_FOLDER_PROPERTY)));
+    }
+
+    public static File getFile(Properties properties, String key) {
+        return getFile(properties, key, null);
+    }
+
+    public static File getFile(Properties properties, String key, String folder) {
+        String pathPrefix = System.getenv("OVILEARNING_HOME");
+        String path = properties.getProperty(key);
+        if (folder == null) {
+            return new File(pathPrefix + path);
+        } else {
+            return new File(pathPrefix + folder + File.separator + path);
+        }
+    }
+
     public static String getPath(Properties properties, String key, String prefix) {
         String pathPrefix = System.getenv("OVILEARNING_HOME");
         String path = properties.getProperty(key);
-        System.out.println(path);
         if (path == null) {
         	System.out.println(prefix + pathPrefix);
             return prefix + pathPrefix;

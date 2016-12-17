@@ -1,6 +1,7 @@
 package com.bhirava.ovilearning.ui.component;
 
 import java.awt.Dimension;
+import java.io.IOException;
 import java.util.Properties;
 
 import javax.swing.JFrame;
@@ -16,12 +17,14 @@ public class MainFrame extends JFrame {
 
     private JScrollPane scrollPane;
 
-    public MainFrame(PropertyValues propertyValues) {
+    public MainFrame(PropertyValues propertyValues) throws IOException {
         init(propertyValues);
         setVisible(true);
     }
 
-    private void init(PropertyValues propertyValues) {
+    private void init(PropertyValues propertyValues) throws IOException {
+        Properties textAndPathsProperties = propertyValues.getTextAndPathsProperties();
+        setIconImage(PropertyUtil.getImage(textAndPathsProperties, UIConstants.TextAndPaths.LOGO_PATH));
         initProperties(propertyValues.getPositionProperties());
         initComponents(propertyValues);
         initEvents();
@@ -42,13 +45,15 @@ public class MainFrame extends JFrame {
     private void setScrollPaneProperties(JScrollPane scrollPane, Properties uiPositionProperties) {
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPane.setPreferredSize(new Dimension(PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FRAME_WIDTH), PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FRAME_HEIGHT)));
+        scrollPane.setPreferredSize(new Dimension(PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FRAME_WIDTH), PropertyUtil.getInteger(
+                uiPositionProperties, UIConstants.Positions.FRAME_HEIGHT)));
     }
 
     private void initProperties(Properties uiPositionProperties) {
         setResizable(false);
-//        setLocation(0, 0);
-        setBounds(0, 0, PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FRAME_WIDTH), PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FRAME_HEIGHT));
+        // setLocation(0, 0);
+        setBounds(0, 0, PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FRAME_WIDTH),
+                PropertyUtil.getInteger(uiPositionProperties, UIConstants.Positions.FRAME_HEIGHT));
     }
 
     public void shakeOnce() {

@@ -8,6 +8,7 @@ import java.util.HashMap;
 import javax.swing.JPanel;
 
 import com.bhirava.ovilearning.ui.component.MainPanel;
+import com.bhirava.ovilearning.ui.event.MainPanelRepainter;
 import com.bhirava.ovilearning.ui.event.OnClickFocus;
 
 public class Panel extends JPanel {
@@ -41,6 +42,8 @@ public class Panel extends JPanel {
 
     public void addChild(String name, Component child) {
 		childComponents.put(name, child);
+		child.addMouseMotionListener(new MainPanelRepainter(this));
+		child.addFocusListener(new MainPanelRepainter(this));
 		add(child);
 	}
 
