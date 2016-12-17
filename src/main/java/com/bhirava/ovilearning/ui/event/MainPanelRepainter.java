@@ -18,17 +18,21 @@ public class MainPanelRepainter implements MouseMotionListener, FocusListener {
     }
 
     public void mouseDragged(MouseEvent e) {
+    	System.out.println("mouse dragged event");
     }
 
     public void mouseMoved(MouseEvent e) {
-//        repaint();
+    	System.out.println("Repainting: start on movemoved event");
+        repaint();
     }
 
     public void focusGained(FocusEvent e) {
+    	System.out.println("Repainting: focus gained event");
         repaint();
     }
 
     public void focusLost(FocusEvent e) {
+    	System.out.println("Repainting: focus lost event");
         repaint();
     }
 

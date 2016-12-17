@@ -26,7 +26,8 @@ public class LayeredPanel extends Panel {
 
     @Override
     public void addChild(String name, Component child) {
-        childComponents.put(name, child);
+        //childComponents.put(name, child);
+        super.addChild(name, child);
         layeredPane.add(child, new Integer(childComponents.size()));
     }
 
