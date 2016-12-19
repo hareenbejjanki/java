@@ -16,9 +16,7 @@ import com.bhirava.ovilearning.ui.util.PropertyValues;
  * @author Hareen Bejjanki
  */
 
-public class App extends javax.swing.JPanel {
-    private static final long serialVersionUID = 1L;
-
+public class App {
     public static void main(String[] args) {
         try {
             MainFrame mainFrame = new MainFrame(getPropertyValues());
