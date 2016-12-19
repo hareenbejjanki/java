@@ -35,15 +35,20 @@ public class Panel extends JPanel {
 		return childComponents;
 	}
 
+    protected void addChildDetails(Component child) {
+        child.addMouseMotionListener(new MainPanelRepainter(this));
+        child.addFocusListener(new MainPanelRepainter(this));
+    }
+
     public void addChild(Panel panel) {
         childComponents.put(panel.getName(), panel);
+        addChildDetails(panel);
         add(panel);
     }
 
     public void addChild(String name, Component child) {
 		childComponents.put(name, child);
-		child.addMouseMotionListener(new MainPanelRepainter(this));
-		child.addFocusListener(new MainPanelRepainter(this));
+		addChildDetails(child);
 		add(child);
 	}
 
