@@ -50,7 +50,8 @@ public class Button extends Panel {
     }
 
     private void init(Rectangle bounds, String text) {
-        setBackground(backgroundColor);
+    	
+       // setBackground(backgroundColor);
 
         button = new JButton();
         button.setText(text);
@@ -59,6 +60,7 @@ public class Button extends Panel {
         button.setBounds(new Rectangle(0, 0, bounds.width, bounds.height));
         Border border = BorderFactory.createLineBorder(borderColor, borderWidth, true);
         button.setBorder(border);
+        button.setBackground(backgroundColor);
 
         if (borderFocusColor != null) {
             Border focusBorder = BorderFactory.createLineBorder(borderFocusColor, borderWidth, true);
